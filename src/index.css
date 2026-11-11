@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --canvas: #120302;
+    --canvas-card: #0c1e34;
+    --flame-primary: #f95738;
+    --lilac-secondary: #e8daff;
+    --seal-accent: #0c1e34;
+    --border-subtle: rgba(232, 218, 255, 0.16);
+    --text-primary: #ffffff;
+    --text-secondary: #d4d0e0;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: #0d0201;
+    background-image: radial-gradient(ellipse at 50% -15%, #4e1208 0%, #290804 42%, #120302 80%, #070101 100%);
+    background-attachment: fixed;
+    color: #ffffff;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+  }
+}
+
+/* Custom crisp focus outline */
+*:focus-visible {
+  outline: 2px solid #f95738;
+  outline-offset: 2px;
+}
+
+/* Scrollbar styling for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0d0201;
+}
+::-webkit-scrollbar-thumb {
+  background: #3d140e;
+  border-radius: 9999px;
+  border: 2px solid #0d0201;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f95738;
+}
