@@ -19,8 +19,8 @@ export const Avatar: React.FC<AvatarProps> = ({
   const sizes = {
     sm: 'w-7 h-7 text-xs',
     md: 'w-10 h-10 text-sm',
-    lg: 'w-14 h-14 text-base font-semibold',
-    xl: 'w-20 h-20 text-xl font-semibold',
+    lg: 'w-12 h-12 text-base font-medium',
+    xl: 'w-16 h-16 text-lg font-medium',
   };
 
   const getInitials = (n: string) => {
@@ -36,7 +36,7 @@ export const Avatar: React.FC<AvatarProps> = ({
   return (
     <div
       className={cn(
-        'relative inline-flex shrink-0 items-center justify-center rounded-full bg-brand-100 text-brand-900 overflow-hidden select-none border border-zinc-200/60 font-medium',
+        'relative inline-flex shrink-0 items-center justify-center rounded-full bg-primary-soft text-primary-hover overflow-hidden select-none border border-border font-medium',
         sizes[size],
         className
       )}
@@ -55,4 +55,3 @@ export const Avatar: React.FC<AvatarProps> = ({
     </div>
   );
 };
-

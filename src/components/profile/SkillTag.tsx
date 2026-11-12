@@ -15,29 +15,29 @@ export const SkillTag: React.FC<SkillTagProps> = ({ skill, type, onDelete }) => 
 
   return (
     <div
-      className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border text-xs font-bold transition-all ${
+      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[6px] border text-xs font-medium transition-colors ${
         isTeach
-          ? 'bg-flame-950/70 border-flame-500/40 text-flame-200'
-          : 'bg-purple-950/70 border-purple-400/40 text-purple-200'
+          ? 'bg-primary-soft border-border text-primary-hover'
+          : 'bg-surface-muted border-border text-text-primary'
       }`}
     >
       <span>{skill.name}</span>
 
       <span
-        className={`px-2 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider ${
+        className={`px-1.5 py-0.2 rounded-[4px] text-[10px] uppercase font-semibold tracking-wide ${
           isTeach
-            ? 'bg-flame-900/80 text-flame-300 border border-flame-500/30'
-            : 'bg-purple-900/80 text-purple-200 border border-purple-400/30'
+            ? 'bg-surface text-primary border border-border'
+            : 'bg-surface text-text-secondary border border-border'
         }`}
       >
-        {isTeach ? teachSkill.proficiency : `${learnSkill.priority} Priority`}
+        {isTeach ? teachSkill.proficiency : `${learnSkill.priority}`}
       </span>
 
       {onDelete && (
         <button
           type="button"
           onClick={() => onDelete(skill.id)}
-          className="text-lilac-400/60 hover:text-rose-400 p-0.5 rounded transition-colors ml-0.5"
+          className="text-text-secondary hover:text-danger p-0.5 rounded transition-colors ml-0.5"
           title="Remove skill"
         >
           <X className="w-3.5 h-3.5" />

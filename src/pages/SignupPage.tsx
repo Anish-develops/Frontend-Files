@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowLeftRight, UserPlus, ArrowRight, ShieldCheck } from 'lucide-react';
+import { ArrowLeftRight, UserPlus, ShieldCheck } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { useAuth } from '../context/AuthContext';
@@ -69,25 +69,25 @@ export const SignupPage: React.FC<SignupPageProps> = ({ onNavigate }) => {
   };
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center px-4 py-12 text-white">
-      <div className="w-full max-w-lg space-y-6">
+    <div className="min-h-[80vh] flex items-center justify-center px-4 py-10 text-text-primary">
+      <div className="w-full max-w-lg space-y-5">
         {/* Brand header */}
-        <div className="text-center space-y-2">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-flame-gradient text-white shadow-flame mb-2">
-            <ArrowLeftRight className="w-6 h-6" />
+        <div className="text-center space-y-1.5">
+          <div className="inline-flex items-center justify-center w-10 h-10 rounded-[10px] bg-primary text-white shadow-subtle mb-1">
+            <ArrowLeftRight className="w-5 h-5" />
           </div>
-          <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-white uppercase">
-            Create Your Exchange Profile
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-text-primary">
+            Create your exchange profile
           </h1>
-          <p className="text-xs text-lilac-200/80">
+          <p className="text-xs text-text-secondary">
             Join the non-monetary 1:1 learning community. Share your craft, learn from peers.
           </p>
         </div>
 
-        {/* Main Signup Form in Accent Navy Card */}
-        <div className="rounded-3xl border border-lilac-300/25 bg-[#0c1e34]/95 p-8 shadow-2xl space-y-5 backdrop-blur-xl">
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {/* Main Signup Form in Soft White Card */}
+        <div className="rounded-[14px] border border-border bg-surface p-6 sm:p-7 shadow-card space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-3.5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
               <Input
                 label="Full Name"
                 value={name}
@@ -122,8 +122,8 @@ export const SignupPage: React.FC<SignupPageProps> = ({ onNavigate }) => {
               helperText="Shown to prospective swap partners in match search"
             />
 
-            <div className="p-4 rounded-2xl bg-[#071322] border border-lilac-300/20 space-y-3.5">
-              <span className="text-xs font-bold text-flame-400 uppercase tracking-wider block">
+            <div className="p-3.5 rounded-[10px] bg-surface-muted border border-border space-y-3">
+              <span className="text-xs font-semibold text-text-primary uppercase tracking-wider block">
                 Initial Reciprocal Pairing Setup
               </span>
 
@@ -143,7 +143,7 @@ export const SignupPage: React.FC<SignupPageProps> = ({ onNavigate }) => {
             </div>
 
             {error && (
-              <p className="text-xs text-rose-300 font-medium bg-rose-950/70 p-3 rounded-xl border border-rose-500/40">
+              <p className="text-xs text-danger font-medium bg-danger-soft p-2.5 rounded-[8px] border border-danger-border">
                 {error}
               </p>
             )}
@@ -152,7 +152,7 @@ export const SignupPage: React.FC<SignupPageProps> = ({ onNavigate }) => {
               type="submit"
               variant="primary"
               size="lg"
-              className="w-full gap-2 shadow-flame mt-2 font-bold"
+              className="w-full gap-2 mt-1"
               isLoading={isLoading}
             >
               <UserPlus className="w-4 h-4" />
@@ -160,20 +160,20 @@ export const SignupPage: React.FC<SignupPageProps> = ({ onNavigate }) => {
             </Button>
           </form>
 
-          <div className="pt-4 text-center text-xs text-lilac-200/80 border-t border-lilac-200/10">
+          <div className="pt-3 text-center text-xs text-text-secondary border-t border-border">
             <span>Already have an active profile? </span>
             <button
               type="button"
               onClick={() => onNavigate('login')}
-              className="font-bold text-flame-400 hover:text-flame-300 underline ml-1"
+              className="font-medium text-primary hover:text-primary-hover underline ml-1"
             >
               Log in directly
             </button>
           </div>
         </div>
 
-        <div className="flex items-center justify-center gap-2 text-xs text-lilac-200/60 font-semibold">
-          <ShieldCheck className="w-4 h-4 text-emerald-400" />
+        <div className="flex items-center justify-center gap-1.5 text-xs text-text-secondary">
+          <ShieldCheck className="w-4 h-4 text-success" />
           <span>Strictly 1:1 Reciprocal Exchange • Zero Cash Required</span>
         </div>
       </div>

@@ -109,28 +109,28 @@ export const FindMatchesPage: React.FC<FindMatchesPageProps> = ({
   };
 
   return (
-    <div className="space-y-6 pb-16 text-white">
+    <div className="space-y-6 pb-16 text-text-primary">
       {/* Page Header */}
       <div>
-        <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-white uppercase">
+        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-text-primary">
           Find Learning Partners
         </h1>
-        <p className="text-xs sm:text-sm text-lilac-200/80 mt-1">
+        <p className="text-xs sm:text-sm text-text-secondary mt-1">
           Discover members with reciprocal skill alignment. Matches are ranked by mutual two-way fit.
         </p>
       </div>
 
       {/* Filter & Search Bar */}
-      <div className="p-5 bg-[#0c1e34]/90 backdrop-blur-md rounded-3xl border border-lilac-300/20 shadow-lifted space-y-4">
-        <div className="flex flex-col sm:flex-row items-center gap-3">
+      <div className="p-4 sm:p-5 bg-surface rounded-[14px] border border-border shadow-card space-y-3.5">
+        <div className="flex flex-col sm:flex-row items-center gap-2.5">
           <div className="relative flex-1 w-full">
-            <Search className="w-4 h-4 text-lilac-300 absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-text-secondary absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               placeholder="Search by skill (e.g. Figma, Python, Spanish) or member name..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full h-11 pl-10 pr-4 rounded-xl border border-lilac-300/20 bg-[#071322] text-sm text-white placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-flame-500 font-medium"
+              className="w-full h-10 pl-9 pr-3 rounded-[9px] border border-border bg-surface text-sm text-text-primary placeholder:text-text-secondary/50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary font-normal shadow-subtle"
             />
           </div>
 
@@ -138,7 +138,7 @@ export const FindMatchesPage: React.FC<FindMatchesPageProps> = ({
             <select
               value={availabilityFilter}
               onChange={(e) => setAvailabilityFilter(e.target.value as any)}
-              className="h-11 px-3 rounded-xl border border-lilac-300/20 text-xs font-bold text-white bg-[#071322] focus:outline-none focus:ring-2 focus:ring-flame-500"
+              className="h-10 px-3 rounded-[9px] border border-border text-xs font-medium text-text-primary bg-surface focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary shadow-subtle"
             >
               <option value="All">Any Availability</option>
               <option value="Evenings">Evenings</option>
@@ -148,7 +148,7 @@ export const FindMatchesPage: React.FC<FindMatchesPageProps> = ({
             <select
               value={minRating}
               onChange={(e) => setMinRating(Number(e.target.value))}
-              className="h-11 px-3 rounded-xl border border-lilac-300/20 text-xs font-bold text-white bg-[#071322] focus:outline-none focus:ring-2 focus:ring-flame-500"
+              className="h-10 px-3 rounded-[9px] border border-border text-xs font-medium text-text-primary bg-surface focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary shadow-subtle"
             >
               <option value={0}>Any Rating</option>
               <option value={4.8}>Rating: 4.8+</option>
@@ -160,7 +160,7 @@ export const FindMatchesPage: React.FC<FindMatchesPageProps> = ({
                 variant="ghost"
                 size="sm"
                 onClick={handleResetFilters}
-                className="h-11 text-xs text-lilac-200 hover:text-white font-bold"
+                className="h-10 text-xs text-text-secondary hover:text-text-primary"
               >
                 <RotateCcw className="w-3.5 h-3.5 mr-1" />
                 Reset
@@ -170,18 +170,18 @@ export const FindMatchesPage: React.FC<FindMatchesPageProps> = ({
         </div>
 
         {/* Category Pills */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 pt-2 border-t border-lilac-200/10">
-          <span className="text-xs font-bold text-lilac-200/70 mr-2 uppercase tracking-wide shrink-0">
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 pt-1 border-t border-border">
+          <span className="text-xs font-medium text-text-secondary mr-1 shrink-0">
             Category:
           </span>
           {CATEGORIES.map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
+              className={`px-3 py-1 rounded-[7px] text-xs font-medium whitespace-nowrap transition-colors border ${
                 selectedCategory === cat
-                  ? 'bg-flame-gradient text-white shadow-flame'
-                  : 'bg-white/5 text-lilac-100 hover:bg-white/10 hover:text-white border border-lilac-300/15'
+                  ? 'bg-primary-soft text-primary-hover border-border font-semibold'
+                  : 'bg-surface-muted text-text-secondary hover:text-text-primary border-border'
               }`}
             >
               {cat}
@@ -191,11 +191,11 @@ export const FindMatchesPage: React.FC<FindMatchesPageProps> = ({
       </div>
 
       {/* Results Header */}
-      <div className="flex items-center justify-between text-xs text-lilac-200/80 font-semibold px-1">
+      <div className="flex items-center justify-between text-xs text-text-secondary px-1">
         <span>
-          Showing <strong className="text-white">{filteredMatches.length}</strong> compatible exchange partner{filteredMatches.length !== 1 ? 's' : ''}
+          Showing <strong className="text-text-primary font-semibold">{filteredMatches.length}</strong> compatible exchange partner{filteredMatches.length !== 1 ? 's' : ''}
         </span>
-        <span className="flex items-center gap-1.5 text-flame-400 font-bold">
+        <span className="flex items-center gap-1.5 text-success font-medium">
           <ArrowLeftRight className="w-3.5 h-3.5" />
           <span>Ranked by reciprocal match fit</span>
         </span>
@@ -215,17 +215,17 @@ export const FindMatchesPage: React.FC<FindMatchesPageProps> = ({
         </div>
       ) : (
         /* Empty State */
-        <div className="p-12 bg-[#0c1e34]/90 backdrop-blur-md rounded-3xl border border-lilac-300/20 text-center space-y-4 max-w-lg mx-auto">
-          <div className="w-12 h-12 rounded-full bg-white/5 text-lilac-300 flex items-center justify-center mx-auto">
-            <Search className="w-6 h-6" />
+        <div className="p-10 bg-surface rounded-[14px] border border-border text-center space-y-3 max-w-lg mx-auto shadow-card">
+          <div className="w-10 h-10 rounded-full bg-surface-muted text-text-secondary flex items-center justify-center mx-auto border border-border">
+            <Search className="w-5 h-5" />
           </div>
           <div className="space-y-1">
-            <h3 className="text-base font-bold text-white">No matching exchange partners found</h3>
-            <p className="text-xs text-lilac-200/75 leading-relaxed">
+            <h3 className="text-base font-semibold text-text-primary">No matching exchange partners found</h3>
+            <p className="text-xs text-text-secondary leading-relaxed">
               We couldn&apos;t find any members matching your current query or filters. Try adjusting your search term or exploring another category.
             </p>
           </div>
-          <Button variant="outline" size="md" onClick={handleResetFilters} className="text-xs font-bold">
+          <Button variant="secondary" size="md" onClick={handleResetFilters} className="text-xs">
             Clear all filters
           </Button>
         </div>

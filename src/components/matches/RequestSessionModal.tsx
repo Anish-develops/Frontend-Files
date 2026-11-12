@@ -59,22 +59,24 @@ export const RequestSessionModal: React.FC<RequestSessionModalProps> = ({
       const tomorrow = new Date();
       tomorrow.setDate(tomorrow.getDate() + 2);
       setProposedDate(tomorrow.toISOString().split('T')[0]);
-      setNote('');
-      setErrors({});
+      setNote(
+        `Hi ${partner.name.split(' ')[0]}, let's do a 1:1 swap. I can share deep insights on ${
+          match && match.youTeach.length > 0 ? match.youTeach[0] : 'my skills'
+        }, and would love to learn ${
+          match && match.theyTeach.length > 0 ? match.theyTeach[0] : 'from your experience'
+        }.`
+      );
     }
-  }, [isOpen, partner, currentUser, match]);
+  }, [isOpen, match, partner, currentUser]);
 
   if (!partner || !currentUser) return null;
 
   const validate = () => {
     const errs: Record<string, string> = {};
-    if (!teachSkillName) errs.teachSkill = 'Select a skill to teach';
-    if (!learnSkillName) errs.learnSkill = 'Select a skill you want to learn';
+    if (!teachSkillName) errs.teachSkill = 'Select a skill you will teach';
+    if (!learnSkillName) errs.learnSkill = 'Select a skill to learn';
     if (!proposedDate) errs.date = 'Select a proposed date';
     if (!proposedTime) errs.time = 'Select a proposed time';
-    if (!note.trim() || note.trim().length < 15) {
-      errs.note = 'Please add a brief note (at least 15 characters) introducing what you want to cover.';
-    }
     setErrors(errs);
     return Object.keys(errs).length === 0;
   };
@@ -96,11 +98,11 @@ export const RequestSessionModal: React.FC<RequestSessionModalProps> = ({
         note: note.trim(),
       });
 
-      toast(`Exchange request sent to ${partner.name}!`, 'success');
-      onSuccess?.();
+      toast('Exchange request sent successfully! Partner notified.', 'success');
+      if (onSuccess) onSuccess();
       onClose();
     } catch (err: unknown) {
-      toast(err instanceof Error ? err.message : 'Failed to send request', 'error');
+      toast(err instanceof Error ? err.message : 'Error submitting request', 'error');
     } finally {
       setIsSubmitting(false);
     }
@@ -114,34 +116,34 @@ export const RequestSessionModal: React.FC<RequestSessionModalProps> = ({
       description={`Coordinate a 1:1 reciprocal exchange session with ${partner.name}.`}
       maxWidth="lg"
     >
-      <form onSubmit={handleSubmit} className="space-y-5 text-white">
+      <form onSubmit={handleSubmit} className="space-y-4 text-text-primary">
         {/* Partner Header */}
-        <div className="flex items-center gap-3.5 p-3.5 bg-[#071322] rounded-2xl border border-lilac-300/15">
+        <div className="flex items-center gap-3 p-3 bg-surface-muted rounded-[10px] border border-border">
           <Avatar src={partner.avatar} name={partner.name} size="md" />
-          <div className="flex-1">
-            <h4 className="font-bold text-white text-sm">{partner.name}</h4>
-            <p className="text-xs text-lilac-200/80 line-clamp-1">{partner.headline}</p>
-            <p className="text-[11px] text-lilac-200/50 mt-0.5">Availability: {partner.availability.summary}</p>
+          <div className="flex-1 min-w-0">
+            <h4 className="font-semibold text-text-primary text-sm">{partner.name}</h4>
+            <p className="text-xs text-text-secondary truncate">{partner.headline}</p>
+            <p className="text-[11px] text-text-secondary mt-0.5">Availability: {partner.availability.summary}</p>
           </div>
         </div>
 
         {/* 2-Way Reciprocal Swap Configuration */}
-        <div className="p-4 bg-purple-950/60 rounded-2xl border border-purple-400/30 space-y-3">
-          <div className="flex items-center gap-2 text-xs font-black text-white uppercase tracking-wider">
-            <ArrowLeftRight className="w-4 h-4 text-flame-400" />
+        <div className="p-3.5 bg-surface-muted rounded-[10px] border border-border space-y-2.5">
+          <div className="flex items-center gap-2 text-xs font-semibold text-text-primary uppercase tracking-wider">
+            <ArrowLeftRight className="w-3.5 h-3.5 text-primary" />
             <span>Reciprocal Value Exchange</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {/* What you teach */}
             <div>
-              <label className="block text-xs font-bold text-lilac-200 mb-1">
+              <label className="block text-xs font-medium text-text-primary mb-1">
                 You will teach:
               </label>
               <select
                 value={teachSkillName}
                 onChange={(e) => setTeachSkillName(e.target.value)}
-                className="w-full h-11 rounded-xl border border-lilac-300/20 bg-[#071322] px-3 text-xs text-white focus:outline-none focus:ring-2 focus:ring-flame-500 font-bold"
+                className="w-full h-10 rounded-[9px] border border-border bg-surface px-3 text-xs text-text-primary focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary font-medium"
               >
                 {currentUser.teachSkills.map((s) => (
                   <option key={s.id} value={s.name}>
@@ -149,18 +151,18 @@ export const RequestSessionModal: React.FC<RequestSessionModalProps> = ({
                   </option>
                 ))}
               </select>
-              {errors.teachSkill && <p className="text-xs text-rose-400 mt-1">{errors.teachSkill}</p>}
+              {errors.teachSkill && <p className="text-xs text-danger mt-1">{errors.teachSkill}</p>}
             </div>
 
             {/* What they teach */}
             <div>
-              <label className="block text-xs font-bold text-lilac-200 mb-1">
+              <label className="block text-xs font-medium text-text-primary mb-1">
                 {partner.name.split(' ')[0]} will teach:
               </label>
               <select
                 value={learnSkillName}
                 onChange={(e) => setLearnSkillName(e.target.value)}
-                className="w-full h-11 rounded-xl border border-lilac-300/20 bg-[#071322] px-3 text-xs text-white focus:outline-none focus:ring-2 focus:ring-flame-500 font-bold"
+                className="w-full h-10 rounded-[9px] border border-border bg-surface px-3 text-xs text-text-primary focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary font-medium"
               >
                 {partner.teachSkills.map((s) => (
                   <option key={s.id} value={s.name}>
@@ -168,7 +170,7 @@ export const RequestSessionModal: React.FC<RequestSessionModalProps> = ({
                   </option>
                 ))}
               </select>
-              {errors.learnSkill && <p className="text-xs text-rose-400 mt-1">{errors.learnSkill}</p>}
+              {errors.learnSkill && <p className="text-xs text-danger mt-1">{errors.learnSkill}</p>}
             </div>
           </div>
         </div>
@@ -176,8 +178,8 @@ export const RequestSessionModal: React.FC<RequestSessionModalProps> = ({
         {/* Date, Time & Duration */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div>
-            <label className="block text-xs font-bold text-lilac-200 mb-1.5 flex items-center gap-1">
-              <Calendar className="w-3.5 h-3.5 text-lilac-400" />
+            <label className="block text-xs font-medium text-text-primary mb-1.5 flex items-center gap-1">
+              <Calendar className="w-3.5 h-3.5 text-text-secondary" />
               <span>Proposed Date</span>
             </label>
             <Input
@@ -190,14 +192,14 @@ export const RequestSessionModal: React.FC<RequestSessionModalProps> = ({
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-lilac-200 mb-1.5 flex items-center gap-1">
-              <Clock className="w-3.5 h-3.5 text-lilac-400" />
+            <label className="block text-xs font-medium text-text-primary mb-1.5 flex items-center gap-1">
+              <Clock className="w-3.5 h-3.5 text-text-secondary" />
               <span>Proposed Time</span>
             </label>
             <select
               value={proposedTime}
               onChange={(e) => setProposedTime(e.target.value)}
-              className="w-full h-11 rounded-xl border border-lilac-300/20 bg-[#071322] px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-flame-500 font-bold"
+              className="w-full h-10 rounded-[9px] border border-border bg-surface px-3 text-sm text-text-primary focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary font-medium shadow-subtle"
             >
               <option value="09:00">09:00 AM</option>
               <option value="10:30">10:30 AM</option>
@@ -209,17 +211,17 @@ export const RequestSessionModal: React.FC<RequestSessionModalProps> = ({
               <option value="19:30">07:30 PM</option>
               <option value="20:30">08:30 PM</option>
             </select>
-            {errors.time && <p className="text-xs text-rose-400 mt-1">{errors.time}</p>}
+            {errors.time && <p className="text-xs text-danger mt-1">{errors.time}</p>}
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-lilac-200 mb-1.5">
+            <label className="block text-xs font-medium text-text-primary mb-1.5">
               Duration
             </label>
             <select
               value={durationMinutes}
               onChange={(e) => setDurationMinutes(Number(e.target.value))}
-              className="w-full h-11 rounded-xl border border-lilac-300/20 bg-[#071322] px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-flame-500 font-bold"
+              className="w-full h-10 rounded-[9px] border border-border bg-surface px-3 text-sm text-text-primary focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary font-medium shadow-subtle"
             >
               <option value={30}>30 minutes</option>
               <option value={45}>45 minutes</option>
@@ -231,39 +233,39 @@ export const RequestSessionModal: React.FC<RequestSessionModalProps> = ({
 
         {/* Format Selection */}
         <div>
-          <label className="block text-xs font-bold text-lilac-200 mb-1.5">
+          <label className="block text-xs font-medium text-text-primary mb-1.5">
             Session Format
           </label>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-2.5">
             <button
               type="button"
               onClick={() => setFormat('online')}
-              className={`flex items-center gap-2.5 p-3 rounded-2xl border text-xs font-bold transition-all ${
+              className={`flex items-center gap-2 p-2.5 rounded-[9px] border text-xs font-medium transition-colors ${
                 format === 'online'
-                  ? 'border-flame-500 bg-flame-950/80 text-flame-300 ring-1 ring-flame-500'
-                  : 'border-lilac-300/20 bg-[#071322] text-lilac-200/80 hover:text-white'
+                  ? 'border-primary bg-primary-soft text-primary-hover ring-1 ring-primary'
+                  : 'border-border bg-surface text-text-secondary hover:text-text-primary hover:bg-surface-muted'
               }`}
             >
-              <Video className="w-4 h-4 text-flame-400" />
+              <Video className="w-4 h-4 text-primary shrink-0" />
               <div className="text-left">
-                <span className="block font-bold">Online Video Call</span>
-                <span className="text-[11px] text-lilac-200/60 font-normal">Google Meet link generated</span>
+                <span className="block font-semibold">Online Video Call</span>
+                <span className="text-[11px] text-text-secondary font-normal">Google Meet link generated</span>
               </div>
             </button>
 
             <button
               type="button"
               onClick={() => setFormat('in_person')}
-              className={`flex items-center gap-2.5 p-3 rounded-2xl border text-xs font-bold transition-all ${
+              className={`flex items-center gap-2 p-2.5 rounded-[9px] border text-xs font-medium transition-colors ${
                 format === 'in_person'
-                  ? 'border-flame-500 bg-flame-950/80 text-flame-300 ring-1 ring-flame-500'
-                  : 'border-lilac-300/20 bg-[#071322] text-lilac-200/80 hover:text-white'
+                  ? 'border-primary bg-primary-soft text-primary-hover ring-1 ring-primary'
+                  : 'border-border bg-surface text-text-secondary hover:text-text-primary hover:bg-surface-muted'
               }`}
             >
-              <MapPin className="w-4 h-4 text-flame-400" />
+              <MapPin className="w-4 h-4 text-primary shrink-0" />
               <div className="text-left">
-                <span className="block font-bold">In-Person Meetup</span>
-                <span className="text-[11px] text-lilac-200/60 font-normal">Local coffee / coworking</span>
+                <span className="block font-semibold">In-Person Meetup</span>
+                <span className="text-[11px] text-text-secondary font-normal">Local workspace or cafe</span>
               </div>
             </button>
           </div>
@@ -283,8 +285,8 @@ export const RequestSessionModal: React.FC<RequestSessionModalProps> = ({
         </div>
 
         {/* Actions */}
-        <div className="flex items-center justify-end gap-3 pt-3 border-t border-lilac-200/10">
-          <Button type="button" variant="outline" size="md" onClick={onClose} className="font-bold">
+        <div className="flex items-center justify-end gap-2.5 pt-3 border-t border-border">
+          <Button type="button" variant="secondary" size="md" onClick={onClose}>
             Cancel
           </Button>
           <Button
@@ -292,7 +294,7 @@ export const RequestSessionModal: React.FC<RequestSessionModalProps> = ({
             variant="primary"
             size="md"
             isLoading={isSubmitting}
-            className="gap-2 shadow-flame font-bold"
+            className="gap-2"
           >
             <CheckCircle2 className="w-4 h-4" />
             <span>Send Exchange Request</span>

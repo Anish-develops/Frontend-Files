@@ -71,31 +71,31 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full px-4 sm:px-6 lg:px-8 pt-3 pb-1">
-      <div className="max-w-7xl mx-auto rounded-2xl bg-[#0c1e34]/90 backdrop-blur-xl border border-lilac-300/20 shadow-lifted">
-        <div className="flex items-center justify-between h-16 sm:h-20 px-4 sm:px-6">
+    <header className="sticky top-0 z-40 w-full bg-surface/95 backdrop-blur-md border-b border-border shadow-subtle">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
           {/* Left: Brand Logo */}
           <div className="flex items-center gap-6 sm:gap-8">
             <button
               onClick={() => handleNavClick(user ? 'dashboard' : 'landing')}
-              className="flex items-center gap-3 text-left group focus:outline-none"
+              className="flex items-center gap-2.5 text-left group focus:outline-none"
             >
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#ff6b4d] via-[#f95738] to-[#c5280b] text-white flex items-center justify-center shadow-flame transition-transform group-hover:scale-105">
-                <ArrowLeftRight className="w-5 h-5" />
+              <div className="w-8 h-8 rounded-[9px] bg-primary text-white flex items-center justify-center transition-colors group-hover:bg-primary-hover shadow-subtle">
+                <ArrowLeftRight className="w-4 h-4" />
               </div>
-              <div>
-                <span className="text-lg sm:text-xl font-black tracking-tight text-white block leading-tight">
+              <div className="flex items-baseline gap-1.5">
+                <span className="text-base font-bold tracking-tight text-text-primary">
                   SkillSwap
                 </span>
-                <span className="text-[10px] text-lilac-200/80 font-bold tracking-widest uppercase block">
-                  Peer Exchange
+                <span className="hidden sm:inline-block text-[11px] font-normal text-text-secondary">
+                  Peer Learning
                 </span>
               </div>
             </button>
 
             {/* Authenticated Desktop Navigation Links */}
             {user && (
-              <nav className="hidden md:flex items-center gap-1.5 ml-2">
+              <nav className="hidden md:flex items-center gap-1 ml-2">
                 {navItems.map((item) => {
                   const Icon = item.icon;
                   const isActive = currentRoute === item.id;
@@ -103,16 +103,16 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
                     <button
                       key={item.id}
                       onClick={() => handleNavClick(item.id)}
-                      className={`relative flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
+                      className={`relative flex items-center gap-2 px-3 py-1.5 rounded-[8px] text-xs sm:text-sm font-medium transition-colors ${
                         isActive
-                          ? 'bg-flame-gradient text-white shadow-flame'
-                          : 'text-lilac-100 hover:text-white hover:bg-white/10'
+                          ? 'bg-primary-soft text-primary-hover font-semibold'
+                          : 'text-text-secondary hover:text-text-primary hover:bg-surface-muted'
                       }`}
                     >
                       <Icon className="w-4 h-4" />
                       <span>{item.label}</span>
                       {item.badge !== undefined && (
-                        <span className="ml-1 px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-white text-seal-900">
+                        <span className="ml-1 px-1.5 py-0.2 rounded-full text-[10px] font-semibold bg-primary text-white">
                           {item.badge}
                         </span>
                       )}
@@ -123,22 +123,22 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
             )}
           </div>
 
-          {/* Center Pill Menu for Public Landing (QuantraLogic style) */}
+          {/* Center Links for Public Landing */}
           {!user && (
-            <div className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#071322] border border-lilac-300/20 text-white text-xs font-semibold shadow-inner">
+            <div className="hidden lg:flex items-center gap-1 text-sm font-medium">
               <button
                 onClick={() => handleNavClick('landing')}
-                className={`px-3.5 py-1.5 rounded-full transition-all ${
+                className={`px-3 py-1.5 rounded-[8px] transition-colors ${
                   currentRoute === 'landing'
-                    ? 'bg-flame-500/20 text-flame-300 border border-flame-500/30 font-bold'
-                    : 'text-lilac-200/80 hover:text-white'
+                    ? 'text-primary font-semibold'
+                    : 'text-text-secondary hover:text-text-primary'
                 }`}
               >
                 Overview
               </button>
               <button
                 onClick={() => handleNavClick('matches')}
-                className="px-3.5 py-1.5 rounded-full text-lilac-200/80 hover:text-white transition-colors"
+                className="px-3 py-1.5 rounded-[8px] text-text-secondary hover:text-text-primary transition-colors"
               >
                 Explore Skills
               </button>
@@ -149,7 +149,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
                     document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' });
                   }, 50);
                 }}
-                className="px-3.5 py-1.5 rounded-full text-lilac-200/80 hover:text-white transition-colors"
+                className="px-3 py-1.5 rounded-[8px] text-text-secondary hover:text-text-primary transition-colors"
               >
                 How It Works
               </button>
@@ -157,72 +157,72 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
           )}
 
           {/* Right: User Menu or Auth CTAs */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             {user ? (
               /* Profile Dropdown */
               <div className="relative">
                 <button
                   onClick={() => setUserDropdownOpen(!userDropdownOpen)}
-                  className="flex items-center gap-2 p-1.5 rounded-full hover:ring-2 hover:ring-lilac-300/40 transition-all focus:outline-none bg-white/5"
+                  className="flex items-center gap-2 p-1 pl-1.5 rounded-full hover:bg-surface-muted border border-border transition-colors focus:outline-none"
                 >
                   <Avatar src={user.avatar} name={user.name} size="sm" />
-                  <span className="hidden sm:block text-xs font-bold text-white px-1">
+                  <span className="hidden sm:block text-xs font-medium text-text-primary px-1">
                     {user.name.split(' ')[0]}
                   </span>
-                  <ChevronDown className="w-3.5 h-3.5 text-lilac-200" />
+                  <ChevronDown className="w-3.5 h-3.5 text-text-secondary pr-1" />
                 </button>
 
                 {userDropdownOpen && (
-                  <div className="absolute right-0 mt-2 w-56 rounded-2xl bg-[#0c1e34] border border-lilac-300/25 shadow-2xl py-2 z-50 animate-in fade-in zoom-in-95 duration-100">
-                    <div className="px-4 py-2.5 border-b border-lilac-200/10">
-                      <p className="text-sm font-bold text-white leading-tight">
+                  <div className="absolute right-0 mt-2 w-56 rounded-[12px] bg-surface border border-border shadow-lifted py-1.5 z-50 animate-in fade-in zoom-in-95 duration-100">
+                    <div className="px-3.5 py-2 border-b border-border">
+                      <p className="text-xs font-semibold text-text-primary leading-tight">
                         {user.name}
                       </p>
-                      <p className="text-xs text-lilac-200/70 truncate">{user.email}</p>
+                      <p className="text-[11px] text-text-secondary truncate mt-0.5">{user.email}</p>
                     </div>
 
                     <button
                       onClick={() => handleNavClick('profile')}
-                      className="w-full flex items-center gap-2.5 px-4 py-2 text-xs font-semibold text-lilac-100 hover:bg-white/10"
+                      className="w-full flex items-center gap-2.5 px-3.5 py-2 text-xs text-text-secondary hover:text-text-primary hover:bg-surface-muted transition-colors"
                     >
-                      <UserIcon className="w-4 h-4 text-lilac-300" />
+                      <UserIcon className="w-3.5 h-3.5 text-text-secondary" />
                       <span>My Profile & Skills</span>
                     </button>
 
                     <button
                       onClick={() => handleNavClick('landing')}
-                      className="w-full flex items-center gap-2.5 px-4 py-2 text-xs font-semibold text-lilac-100 hover:bg-white/10"
+                      className="w-full flex items-center gap-2.5 px-3.5 py-2 text-xs text-text-secondary hover:text-text-primary hover:bg-surface-muted transition-colors"
                     >
-                      <Compass className="w-4 h-4 text-lilac-300" />
-                      <span>Platform Landing Page</span>
+                      <Compass className="w-3.5 h-3.5 text-text-secondary" />
+                      <span>Platform Overview</span>
                     </button>
 
-                    <div className="my-1.5 border-t border-lilac-200/10" />
+                    <div className="my-1 border-t border-border" />
 
                     <button
                       onClick={() => {
                         logout();
                         handleNavClick('landing');
                       }}
-                      className="w-full flex items-center gap-2.5 px-4 py-2 text-xs font-semibold text-rose-400 hover:bg-rose-950/40"
+                      className="w-full flex items-center gap-2.5 px-3.5 py-2 text-xs font-medium text-danger hover:bg-danger-soft transition-colors"
                     >
-                      <LogOut className="w-4 h-4" />
+                      <LogOut className="w-3.5 h-3.5" />
                       <span>Sign out</span>
                     </button>
                   </div>
                 )}
               </div>
             ) : (
-              <div className="flex items-center gap-2.5">
+              <div className="flex items-center gap-2">
                 <button
                   onClick={() => handleNavClick('login')}
-                  className="px-4 py-2 text-xs font-bold text-lilac-200 hover:text-white rounded-xl hover:bg-white/10 transition-colors"
+                  className="px-3.5 py-1.5 text-xs font-medium text-text-secondary hover:text-text-primary rounded-[8px] hover:bg-surface-muted transition-colors"
                 >
                   Log In
                 </button>
                 <button
                   onClick={() => handleNavClick('signup')}
-                  className="px-5 py-2.5 text-xs font-bold bg-[#ea3a18] bg-gradient-to-r from-[#ff6b4d] via-[#f95738] to-[#c5280b] text-white rounded-full hover:brightness-110 shadow-flame transition-all active:scale-95"
+                  className="px-4 py-2 text-xs font-medium bg-primary text-white rounded-[10px] hover:bg-primary-hover shadow-subtle transition-colors active:scale-98"
                 >
                   Get Started
                 </button>
@@ -232,17 +232,17 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
             {/* Mobile menu trigger */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-lilac-200 hover:text-white hover:bg-white/10 rounded-xl"
+              className="md:hidden p-1.5 text-text-secondary hover:text-text-primary hover:bg-surface-muted rounded-[8px] transition-colors"
               aria-label="Toggle navigation menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
 
         {/* Mobile menu drawer */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-t border-lilac-200/15 p-4 space-y-2 bg-[#071322] rounded-b-2xl">
+          <div className="md:hidden border-t border-border p-4 space-y-2 bg-surface rounded-b-[14px] shadow-lifted">
             {user ? (
               <>
                 {navItems.map((item) => {
@@ -251,30 +251,30 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
                     <button
                       key={item.id}
                       onClick={() => handleNavClick(item.id)}
-                      className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-semibold ${
+                      className={`w-full flex items-center justify-between px-3 py-2 rounded-[8px] text-xs sm:text-sm font-medium ${
                         currentRoute === item.id
-                          ? 'bg-flame-gradient text-white'
-                          : 'text-lilac-100 hover:bg-white/10'
+                          ? 'bg-primary-soft text-primary-hover font-semibold'
+                          : 'text-text-secondary hover:bg-surface-muted hover:text-text-primary'
                       }`}
                     >
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-2.5">
                         <Icon className="w-4 h-4" />
                         <span>{item.label}</span>
                       </div>
                       {item.badge !== undefined && (
-                        <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-white text-seal-900">
+                        <span className="px-1.5 py-0.5 rounded-full text-[10px] font-semibold bg-primary text-white">
                           {item.badge}
                         </span>
                       )}
                     </button>
                   );
                 })}
-                <div className="pt-2 mt-2 border-t border-lilac-200/15 space-y-1">
+                <div className="pt-2 mt-2 border-t border-border space-y-1">
                   <button
                     onClick={() => handleNavClick('profile')}
-                    className="w-full flex items-center gap-2.5 px-3.5 py-2.5 text-sm font-semibold text-lilac-100"
+                    className="w-full flex items-center gap-2.5 px-3 py-2 text-xs font-medium text-text-secondary hover:text-text-primary"
                   >
-                    <UserIcon className="w-4 h-4 text-lilac-300" />
+                    <UserIcon className="w-4 h-4 text-text-secondary" />
                     <span>My Profile</span>
                   </button>
                   <button
@@ -282,7 +282,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
                       logout();
                       handleNavClick('landing');
                     }}
-                    className="w-full flex items-center gap-2.5 px-3.5 py-2.5 text-sm font-semibold text-rose-400"
+                    className="w-full flex items-center gap-2.5 px-3 py-2 text-xs font-medium text-danger hover:bg-danger-soft rounded-[8px]"
                   >
                     <LogOut className="w-4 h-4" />
                     <span>Sign out</span>
@@ -290,22 +290,22 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
                 </div>
               </>
             ) : (
-              <div className="flex flex-col gap-2.5 pt-2">
+              <div className="flex flex-col gap-2 pt-1">
                 <button
                   onClick={() => handleNavClick('matches')}
-                  className="w-full py-2.5 text-center text-sm font-semibold text-lilac-100 bg-white/5 rounded-xl"
+                  className="w-full py-2 text-center text-xs font-medium text-text-secondary bg-surface-muted rounded-[8px]"
                 >
                   Explore Skills
                 </button>
                 <button
                   onClick={() => handleNavClick('login')}
-                  className="w-full py-2.5 text-center text-sm font-semibold text-white border border-lilac-300/20 rounded-xl"
+                  className="w-full py-2 text-center text-xs font-medium text-text-primary border border-border rounded-[8px]"
                 >
                   Log In
                 </button>
                 <button
                   onClick={() => handleNavClick('signup')}
-                  className="w-full py-2.5 text-center text-sm font-bold bg-flame-gradient text-white rounded-xl shadow-flame"
+                  className="w-full py-2 text-center text-xs font-medium bg-primary text-white rounded-[10px] shadow-subtle hover:bg-primary-hover"
                 >
                   Get Started
                 </button>

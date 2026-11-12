@@ -61,38 +61,38 @@ export const NotificationsPage: React.FC<NotificationsPageProps> = ({
     switch (type) {
       case 'session_request':
         return (
-          <div className="p-2 rounded-xl bg-flame-950/80 text-flame-400 border border-flame-500/40">
+          <div className="p-2 rounded-[8px] bg-primary-soft text-primary-hover border border-border">
             <ArrowLeftRight className="w-4 h-4" />
           </div>
         );
       case 'request_accepted':
         return (
-          <div className="p-2 rounded-xl bg-emerald-950/80 text-emerald-400 border border-emerald-500/40">
+          <div className="p-2 rounded-[8px] bg-success-soft text-success border border-success/20">
             <Check className="w-4 h-4" />
           </div>
         );
       case 'request_declined':
         return (
-          <div className="p-2 rounded-xl bg-rose-950/80 text-rose-400 border border-rose-500/40">
+          <div className="p-2 rounded-[8px] bg-danger-soft text-danger border border-danger-border">
             <X className="w-4 h-4" />
           </div>
         );
       case 'session_rescheduled':
         return (
-          <div className="p-2 rounded-xl bg-amber-950/80 text-amber-400 border border-amber-500/40">
+          <div className="p-2 rounded-[8px] bg-primary-soft text-primary-hover border border-border">
             <Clock className="w-4 h-4" />
           </div>
         );
       case 'session_completed':
       case 'review_received':
         return (
-          <div className="p-2 rounded-xl bg-flame-950/80 text-flame-400 border border-flame-500/40">
-            <Star className="w-4 h-4 fill-flame-400" />
+          <div className="p-2 rounded-[8px] bg-surface text-rating border border-border">
+            <Star className="w-4 h-4 fill-rating" />
           </div>
         );
       default:
         return (
-          <div className="p-2 rounded-xl bg-[#071322] text-lilac-300 border border-lilac-300/20">
+          <div className="p-2 rounded-[8px] bg-surface-muted text-text-secondary border border-border">
             <Bell className="w-4 h-4" />
           </div>
         );
@@ -100,31 +100,31 @@ export const NotificationsPage: React.FC<NotificationsPageProps> = ({
   };
 
   return (
-    <div className="max-w-3xl mx-auto space-y-6 pb-16 text-white">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+    <div className="max-w-3xl mx-auto space-y-6 pb-16 text-text-primary">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3.5">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-white uppercase">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-text-primary">
             Notifications
           </h1>
-          <p className="text-xs sm:text-sm text-lilac-200/80 mt-1 font-medium">
+          <p className="text-xs sm:text-sm text-text-secondary mt-0.5">
             Exchange requests, schedule updates, and community feedback.
           </p>
         </div>
 
         <div className="flex items-center gap-2">
-          <div className="flex rounded-xl border border-lilac-300/20 p-1 bg-[#071322] text-xs font-bold">
+          <div className="flex rounded-[9px] border border-border p-1 bg-surface-muted text-xs font-medium">
             <button
               onClick={() => setFilter('all')}
-              className={`px-3 py-1 rounded-lg transition-colors ${
-                filter === 'all' ? 'bg-flame-gradient text-white shadow-flame' : 'text-lilac-200/70 hover:text-white'
+              className={`px-3 py-1 rounded-[6px] transition-colors ${
+                filter === 'all' ? 'bg-surface text-text-primary shadow-subtle font-semibold' : 'text-text-secondary hover:text-text-primary'
               }`}
             >
               All ({notifications.length})
             </button>
             <button
               onClick={() => setFilter('unread')}
-              className={`px-3 py-1 rounded-lg transition-colors ${
-                filter === 'unread' ? 'bg-flame-gradient text-white shadow-flame' : 'text-lilac-200/70 hover:text-white'
+              className={`px-3 py-1 rounded-[6px] transition-colors ${
+                filter === 'unread' ? 'bg-surface text-text-primary shadow-subtle font-semibold' : 'text-text-secondary hover:text-text-primary'
               }`}
             >
               Unread ({notifications.filter((n) => !n.isRead).length})
@@ -132,12 +132,12 @@ export const NotificationsPage: React.FC<NotificationsPageProps> = ({
           </div>
 
           <Button
-            variant="outline"
+            variant="secondary"
             size="sm"
             onClick={handleMarkAllRead}
-            className="text-xs font-bold gap-1.5"
+            className="text-xs gap-1.5"
           >
-            <CheckCheck className="w-3.5 h-3.5 text-lilac-300" />
+            <CheckCheck className="w-3.5 h-3.5 text-text-secondary" />
             <span>Mark all read</span>
           </Button>
         </div>
@@ -145,25 +145,25 @@ export const NotificationsPage: React.FC<NotificationsPageProps> = ({
 
       {/* Notifications list */}
       {displayedNotifs.length > 0 ? (
-        <div className="bg-[#0c1e34]/90 backdrop-blur-md rounded-3xl border border-lilac-300/20 shadow-lifted divide-y divide-lilac-200/10 overflow-hidden">
+        <div className="bg-surface rounded-[14px] border border-border shadow-card divide-y divide-border overflow-hidden">
           {displayedNotifs.map((notif) => (
             <div
               key={notif.id}
-              className={`p-5 flex items-start justify-between gap-4 transition-colors ${
-                !notif.isRead ? 'bg-flame-950/30' : 'hover:bg-white/5'
+              className={`p-4 sm:p-5 flex items-start justify-between gap-4 transition-colors ${
+                !notif.isRead ? 'bg-primary-soft/30' : 'hover:bg-surface-muted/40'
               }`}
             >
-              <div className="flex items-start gap-3.5">
+              <div className="flex items-start gap-3">
                 <div className="shrink-0 mt-0.5">{getIcon(notif.type)}</div>
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
-                    <h4 className="font-bold text-white text-sm">{notif.title}</h4>
+                    <h4 className="font-semibold text-text-primary text-xs sm:text-sm">{notif.title}</h4>
                     {!notif.isRead && (
-                      <span className="w-2 h-2 rounded-full bg-flame-500 shrink-0 animate-ping"></span>
+                      <span className="w-2 h-2 rounded-full bg-primary shrink-0"></span>
                     )}
                   </div>
-                  <p className="text-xs text-lilac-200/90 leading-relaxed font-normal">{notif.message}</p>
-                  <p className="text-[11px] text-lilac-200/50 font-medium">
+                  <p className="text-xs text-text-secondary leading-relaxed font-normal">{notif.message}</p>
+                  <p className="text-[11px] text-text-secondary/70 font-normal">
                     {new Date(notif.createdAt).toLocaleDateString([], {
                       month: 'short',
                       day: 'numeric',
@@ -174,12 +174,12 @@ export const NotificationsPage: React.FC<NotificationsPageProps> = ({
                 </div>
               </div>
 
-              <div className="flex items-center gap-2 shrink-0">
+              <div className="flex items-center gap-1.5 shrink-0">
                 {notif.relatedSessionId && onNavigateToSession && (
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="text-xs font-bold text-flame-400 hover:text-white"
+                    className="text-xs text-primary hover:text-primary-hover font-medium"
                     onClick={() => onNavigateToSession(notif.relatedSessionId)}
                   >
                     View Session
@@ -188,7 +188,7 @@ export const NotificationsPage: React.FC<NotificationsPageProps> = ({
                 {!notif.isRead && (
                   <button
                     onClick={() => handleMarkRead(notif.id)}
-                    className="text-xs text-lilac-200/60 hover:text-white font-bold px-2 py-1"
+                    className="text-xs text-text-secondary hover:text-text-primary font-medium px-2 py-1"
                     title="Mark as read"
                   >
                     Mark read
@@ -199,13 +199,13 @@ export const NotificationsPage: React.FC<NotificationsPageProps> = ({
           ))}
         </div>
       ) : (
-        <div className="p-12 bg-[#0c1e34]/90 backdrop-blur-md rounded-3xl border border-lilac-300/20 text-center space-y-3 max-w-md mx-auto shadow-lifted">
-          <div className="w-14 h-14 rounded-2xl bg-white/5 text-lilac-300 flex items-center justify-center mx-auto border border-lilac-300/20">
-            <Bell className="w-7 h-7 text-lilac-300" />
+        <div className="p-10 bg-surface rounded-[14px] border border-border text-center space-y-2.5 max-w-md mx-auto shadow-card">
+          <div className="w-10 h-10 rounded-full bg-surface-muted text-text-secondary flex items-center justify-center mx-auto border border-border">
+            <Bell className="w-5 h-5 text-text-secondary" />
           </div>
           <div className="space-y-1">
-            <h3 className="text-base font-bold text-white">No notifications</h3>
-            <p className="text-xs text-lilac-200/70">
+            <h3 className="text-sm font-semibold text-text-primary">No notifications</h3>
+            <p className="text-xs text-text-secondary">
               {filter === 'unread' ? 'You are all caught up! No unread alerts.' : 'No notifications received yet.'}
             </p>
           </div>

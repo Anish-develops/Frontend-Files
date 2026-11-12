@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, Clock, Video, MapPin, ArrowLeftRight, Check, X, RotateCcw, Star } from 'lucide-react';
+import { Calendar, Clock, Video, MapPin, Check, X, RotateCcw, Star } from 'lucide-react';
 import { SessionRequest } from '../../types';
 import { Avatar } from '../ui/avatar';
 import { Button } from '../ui/button';
@@ -53,7 +53,7 @@ export const SessionCard: React.FC<SessionCardProps> = ({
       case 'confirmed':
         return <Badge variant="success">Confirmed Session</Badge>;
       case 'rescheduled':
-        return <Badge variant="flame">Time Proposed</Badge>;
+        return <Badge variant="warning">Time Proposed</Badge>;
       case 'completed':
         return <Badge variant="secondary">Completed</Badge>;
       case 'declined':
@@ -66,165 +66,182 @@ export const SessionCard: React.FC<SessionCardProps> = ({
   };
 
   return (
-    <div className="rounded-2xl border border-lilac-300/20 bg-[#0c1e34]/90 backdrop-blur-md p-5 shadow-lifted hover:border-flame-500/40 transition-all flex flex-col justify-between text-white">
-      <div className="space-y-4">
+    <div className="rounded-[14px] border border-border bg-surface p-5 shadow-card hover:border-[#D6CBC0] transition-colors flex flex-col justify-between text-text-primary">
+      <div className="space-y-3.5">
         {/* Header: Partner + Status */}
         <div className="flex items-start justify-between gap-3">
           <div className="flex items-center gap-3">
             <Avatar src={partnerAvatar} name={partnerName} size="md" />
             <div>
-              <p className="text-xs text-lilac-200/60 font-medium">Exchange Partner</p>
-              <h4 className="font-bold text-white text-sm leading-tight">{partnerName}</h4>
+              <p className="text-xs text-text-secondary font-normal">Exchange Partner</p>
+              <h4 className="font-semibold text-text-primary text-sm leading-tight">{partnerName}</h4>
             </div>
           </div>
           {getStatusBadge()}
         </div>
 
         {/* 2-way exchange details */}
-        <div className="p-3 bg-[#071322] rounded-xl border border-lilac-300/15 text-xs space-y-1.5">
-          <div className="flex items-center gap-1.5 text-white">
-            <span className="font-bold text-lilac-200/70">You teach:</span>
-            <span className="font-bold text-flame-300 bg-flame-950/70 px-2 py-0.5 rounded-md border border-flame-500/30">
+        <div className="p-3 bg-surface-muted rounded-[9px] border border-border text-xs space-y-1.5">
+          <div className="flex items-center gap-1.5">
+            <span className="font-medium text-text-secondary">You teach:</span>
+            <span className="font-medium text-primary-hover bg-primary-soft px-2 py-0.5 rounded-[5px] border border-border">
               {isSender ? session.teachSkillName : session.learnSkillName}
             </span>
           </div>
-          <div className="flex items-center gap-1.5 text-white">
-            <span className="font-bold text-lilac-200/70">They teach:</span>
-            <span className="font-bold text-emerald-300 bg-emerald-950/70 px-2 py-0.5 rounded-md border border-emerald-500/30">
+          <div className="flex items-center gap-1.5">
+            <span className="font-medium text-text-secondary">They teach:</span>
+            <span className="font-medium text-success bg-success-soft px-2 py-0.5 rounded-[5px] border border-success/20">
               {isSender ? session.learnSkillName : session.teachSkillName}
             </span>
           </div>
         </div>
 
         {/* Date, Time, Format */}
-        <div className="flex flex-wrap items-center gap-y-1 gap-x-4 text-xs text-lilac-200/80">
-          <div className="flex items-center gap-1.5">
-            <Calendar className="w-3.5 h-3.5 text-lilac-400" />
-            <span>{formatDate(session.proposedDate)}</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <Clock className="w-3.5 h-3.5 text-lilac-400" />
-            <span>
-              {session.proposedTime} ({session.durationMinutes} min)
-            </span>
-          </div>
-          <div className="flex items-center gap-1.5">
+        <div className="flex flex-wrap items-center gap-y-1 gap-x-3.5 text-xs text-text-secondary">
+          <span className="flex items-center gap-1">
+            <Calendar className="w-3.5 h-3.5 text-text-secondary" />
+            {formatDate(session.proposedDate)}
+          </span>
+          <span>•</span>
+          <span className="flex items-center gap-1">
+            <Clock className="w-3.5 h-3.5 text-text-secondary" />
+            {session.proposedTime} ({session.durationMinutes}m)
+          </span>
+          <span>•</span>
+          <span className="flex items-center gap-1">
             {session.format === 'online' ? (
-              <Video className="w-3.5 h-3.5 text-lilac-400" />
+              <Video className="w-3.5 h-3.5 text-text-secondary" />
             ) : (
-              <MapPin className="w-3.5 h-3.5 text-lilac-400" />
+              <MapPin className="w-3.5 h-3.5 text-text-secondary" />
             )}
-            <span className="capitalize">{session.format}</span>
-          </div>
+            {session.format === 'online' ? 'Google Meet' : 'In-person'}
+          </span>
         </div>
 
-        {/* Note snippet */}
+        {/* Message preview */}
         {session.note && (
-          <p className="text-xs text-lilac-200/90 italic line-clamp-2 bg-[#071322] p-2.5 rounded-xl border border-lilac-300/15">
+          <p className="text-xs text-text-secondary italic line-clamp-2 bg-surface-muted/50 p-2 rounded-[6px] border border-border/60">
             &ldquo;{session.note}&rdquo;
           </p>
         )}
       </div>
 
-      {/* Action footer based on status */}
-      <div className="mt-5 pt-3.5 border-t border-lilac-200/10 flex items-center justify-between gap-2">
+      {/* Action Footer depending on state */}
+      <div className="mt-4 pt-3 border-t border-border flex items-center justify-between gap-2">
         <Button
-          variant="ghost"
+          variant="secondary"
           size="sm"
-          className="text-xs text-lilac-200 hover:text-white"
+          className="text-xs"
           onClick={() => onOpenDetails(session)}
         >
           View Details
         </Button>
 
-        <div className="flex items-center gap-2">
-          {/* Pending State Actions */}
-          {(session.status === 'pending' || session.status === 'rescheduled') && (
+        <div className="flex items-center gap-1.5">
+          {/* Pending State for Receiver: Accept / Propose New Time / Decline */}
+          {session.status === 'pending' && !isSender && (
             <>
-              {!isSender ? (
-                <>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="text-rose-400 hover:text-rose-300 hover:bg-rose-950/40 border-rose-500/30"
-                    onClick={() => onDecline?.(session.id)}
-                  >
-                    <X className="w-3.5 h-3.5 mr-1" />
-                    <span>Decline</span>
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => onReschedule?.(session)}
-                  >
-                    <RotateCcw className="w-3.5 h-3.5 mr-1 text-lilac-400" />
-                    <span>Reschedule</span>
-                  </Button>
-                  <Button
-                    variant="primary"
-                    size="sm"
-                    onClick={() => onAccept?.(session.id)}
-                  >
-                    <Check className="w-3.5 h-3.5 mr-1" />
-                    <span>Accept</span>
-                  </Button>
-                </>
-              ) : (
+              {onDecline && (
                 <Button
-                  variant="outline"
+                  variant="ghost"
                   size="sm"
-                  onClick={() => onReschedule?.(session)}
+                  className="text-danger hover:text-danger hover:bg-danger-soft h-8 px-2"
+                  onClick={() => onDecline(session.id)}
+                  title="Decline request"
                 >
-                  <RotateCcw className="w-3.5 h-3.5 mr-1 text-lilac-400" />
-                  <span>Propose New Time</span>
+                  <X className="w-4 h-4" />
+                </Button>
+              )}
+              {onReschedule && (
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  className="text-xs gap-1 h-8"
+                  onClick={() => onReschedule(session)}
+                >
+                  <RotateCcw className="w-3 h-3" />
+                  <span>Reschedule</span>
+                </Button>
+              )}
+              {onAccept && (
+                <Button
+                  variant="primary"
+                  size="sm"
+                  className="text-xs gap-1 h-8"
+                  onClick={() => onAccept(session.id)}
+                >
+                  <Check className="w-3 h-3" />
+                  <span>Accept</span>
                 </Button>
               )}
             </>
           )}
 
-          {/* Confirmed State Actions */}
+          {/* Pending State for Sender */}
+          {session.status === 'pending' && isSender && (
+            <span className="text-[11px] text-text-secondary italic">Awaiting partner confirmation</span>
+          )}
+
+          {/* Rescheduled State */}
+          {session.status === 'rescheduled' && (
+            <Button
+              variant="primary"
+              size="sm"
+              className="text-xs gap-1"
+              onClick={() => onOpenDetails(session)}
+            >
+              <span>Review Proposed Time</span>
+            </Button>
+          )}
+
+          {/* Confirmed State: Join Room / Mark Completed */}
           {session.status === 'confirmed' && (
             <>
               {session.locationOrLink && (
                 <a
                   href={session.locationOrLink}
                   target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1 text-xs font-bold text-flame-400 hover:underline px-2.5 py-1.5"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-[8px] bg-primary text-white text-xs font-medium hover:bg-primary-hover shadow-subtle transition-colors"
                 >
                   <Video className="w-3.5 h-3.5" />
                   <span>Join Call</span>
                 </a>
               )}
-              <Button
-                variant="primary"
-                size="sm"
-                onClick={() => onMarkCompleted?.(session.id)}
-              >
-                <Check className="w-3.5 h-3.5 mr-1" />
-                <span>Mark Completed</span>
-              </Button>
+              {onMarkCompleted && (
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  className="text-xs gap-1 text-success border-success/30 hover:bg-success-soft"
+                  onClick={() => onMarkCompleted(session.id)}
+                >
+                  <Check className="w-3 h-3" />
+                  <span>Mark Done</span>
+                </Button>
+              )}
             </>
           )}
 
-          {/* Completed State Actions */}
+          {/* Completed State: Review */}
           {session.status === 'completed' && (
             <>
               {session.reviewId ? (
-                <span className="inline-flex items-center gap-1 text-xs font-bold text-emerald-300 bg-emerald-950/70 px-2.5 py-1 rounded-lg border border-emerald-500/30">
-                  <Star className="w-3.5 h-3.5 fill-emerald-400 text-emerald-400" />
-                  <span>Review Submitted</span>
+                <span className="inline-flex items-center gap-1 text-xs text-rating font-medium">
+                  <Star className="w-3.5 h-3.5 fill-rating" />
+                  Reviewed
                 </span>
-              ) : (
+              ) : onOpenReview ? (
                 <Button
                   variant="primary"
                   size="sm"
-                  className="gap-1.5"
-                  onClick={() => onOpenReview?.(session)}
+                  className="text-xs gap-1"
+                  onClick={() => onOpenReview(session)}
                 >
-                  <Star className="w-3.5 h-3.5" />
+                  <Star className="w-3.5 h-3.5 fill-white" />
                   <span>Leave Review</span>
                 </Button>
+              ) : (
+                <Badge variant="secondary">Completed</Badge>
               )}
             </>
           )}

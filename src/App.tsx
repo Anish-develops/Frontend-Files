@@ -38,11 +38,11 @@ export const App: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-[#0d0201] text-white space-y-3">
-        <div className="w-12 h-12 rounded-2xl bg-flame-gradient text-white flex items-center justify-center shadow-flame animate-pulse">
-          <span className="font-extrabold text-base tracking-tight">SS</span>
+      <div className="min-h-screen flex flex-col items-center justify-center bg-background text-text-primary space-y-3">
+        <div className="w-10 h-10 rounded-[10px] bg-primary text-white flex items-center justify-center shadow-card animate-pulse">
+          <span className="font-bold text-sm tracking-tight">SS</span>
         </div>
-        <p className="text-xs font-bold tracking-widest text-lilac-200 uppercase">
+        <p className="text-xs font-semibold tracking-wider text-text-secondary uppercase">
           Connecting to SkillSwap...
         </p>
       </div>
@@ -50,7 +50,7 @@ export const App: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-transparent text-white font-sans antialiased relative">
+    <div className="min-h-screen flex flex-col bg-background text-text-primary font-sans antialiased relative">
       {/* Global Navbar */}
       <Navbar currentRoute={currentRoute} onNavigate={handleNavigate} />
 
@@ -90,4 +90,3 @@ export const App: React.FC = () => {
     </div>
   );
 };
-

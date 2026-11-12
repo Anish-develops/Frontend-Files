@@ -51,7 +51,7 @@ export const Modal: React.FC<ModalProps> = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/75 backdrop-blur-sm transition-opacity animate-in fade-in duration-150"
+        className="fixed inset-0 bg-[#292A27]/40 backdrop-blur-[2px] transition-opacity animate-in fade-in duration-150"
         onClick={onClose}
         aria-hidden="true"
       />
@@ -63,25 +63,25 @@ export const Modal: React.FC<ModalProps> = ({
         aria-modal="true"
         aria-labelledby="modal-title"
         className={cn(
-          'relative w-full rounded-3xl bg-[#0c1e34] p-6 text-left shadow-2xl transition-all border border-lilac-300/25 z-10 animate-in fade-in zoom-in-95 duration-150 my-8 text-white',
+          'relative w-full rounded-[14px] bg-surface p-6 text-left shadow-lifted transition-all border border-border z-10 animate-in fade-in zoom-in-95 duration-150 my-8 text-text-primary',
           maxWidths[maxWidth]
         )}
       >
-        <div className="flex items-start justify-between pb-4 border-b border-lilac-200/15">
+        <div className="flex items-start justify-between pb-3.5 border-b border-border">
           <div>
-            <h2 id="modal-title" className="text-lg font-bold text-white">
+            <h2 id="modal-title" className="text-base sm:text-lg font-semibold text-text-primary">
               {title}
             </h2>
             {description && (
-              <p className="mt-1 text-sm text-lilac-200/75 leading-normal">{description}</p>
+              <p className="mt-1 text-xs sm:text-sm text-text-secondary leading-normal">{description}</p>
             )}
           </div>
           <button
             onClick={onClose}
             aria-label="Close dialog"
-            className="rounded-xl p-1.5 text-lilac-200/70 hover:text-white hover:bg-white/10 transition-colors"
+            className="rounded-[8px] p-1.5 text-text-secondary hover:text-text-primary hover:bg-surface-muted transition-colors"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4" />
           </button>
         </div>
 

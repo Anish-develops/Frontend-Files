@@ -6,10 +6,7 @@ import {
   Star,
   Sparkles,
   ArrowRight,
-  CheckCircle2,
   AlertCircle,
-  Plus,
-  BookOpen,
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { api } from '../services/api';
@@ -140,36 +137,36 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
   };
 
   return (
-    <div className="space-y-8 pb-16 text-white">
+    <div className="space-y-6 pb-16 text-text-primary">
       {/* Welcome Banner */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-7 sm:p-8 bg-[#0c1e34]/90 backdrop-blur-md rounded-3xl border border-lilac-300/20 shadow-lifted">
-        <div className="flex items-start gap-4">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-5 p-6 sm:p-7 bg-surface rounded-[14px] border border-border shadow-card">
+        <div className="flex items-start gap-3.5">
           <Avatar src={user.avatar} name={user.name} size="xl" />
-          <div className="space-y-1.5">
-            <h1 className="text-xl sm:text-2xl font-black tracking-tight text-white uppercase">
+          <div className="space-y-1">
+            <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-text-primary">
               Welcome back, {user.name}
             </h1>
-            <p className="text-xs sm:text-sm text-lilac-200/80 max-w-xl">{user.headline}</p>
-            <div className="flex flex-wrap items-center gap-3 pt-1 text-xs text-lilac-200/60 font-medium">
+            <p className="text-xs sm:text-sm text-text-secondary max-w-xl">{user.headline}</p>
+            <div className="flex flex-wrap items-center gap-2.5 pt-0.5 text-xs text-text-secondary">
               <span>{user.location}</span>
               <span>•</span>
-              <span className="text-emerald-400 font-bold">
+              <span className="text-success font-medium">
                 {user.teachSkills.length} skills to teach
               </span>
               <span>•</span>
-              <span className="text-flame-400 font-bold">
+              <span className="text-primary font-medium">
                 {user.learnSkills.length} wishlist targets
               </span>
             </div>
           </div>
         </div>
 
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex items-center gap-2.5 shrink-0">
           <Button
-            variant="outline"
+            variant="secondary"
             size="md"
             onClick={() => onNavigate('profile')}
-            className="text-xs font-bold"
+            className="text-xs"
           >
             Edit Skills
           </Button>
@@ -177,7 +174,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
             variant="primary"
             size="md"
             onClick={() => onNavigate('matches')}
-            className="text-xs font-bold gap-1.5 shadow-flame"
+            className="text-xs gap-1.5"
           >
             <span>Explore Matches</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -186,55 +183,55 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
       </div>
 
       {/* Metrics Row */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="p-5 bg-[#0c1e34]/90 backdrop-blur-md rounded-2xl border border-lilac-300/20 shadow-lifted space-y-1">
-          <span className="text-xs font-bold text-lilac-200/70 uppercase tracking-wide">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5">
+        <div className="p-4 sm:p-5 bg-surface rounded-[12px] border border-border shadow-card space-y-0.5">
+          <span className="text-xs font-medium text-text-secondary uppercase tracking-wider">
             Swaps Completed
           </span>
-          <div className="text-3xl font-black text-white">{user.sessionsCompleted}</div>
-          <p className="text-[11px] text-lilac-200/50 font-medium">1:1 reciprocal sessions</p>
+          <div className="text-2xl sm:text-3xl font-bold text-text-primary">{user.sessionsCompleted}</div>
+          <p className="text-[11px] text-text-secondary">1:1 reciprocal sessions</p>
         </div>
 
-        <div className="p-5 bg-[#0c1e34]/90 backdrop-blur-md rounded-2xl border border-lilac-300/20 shadow-lifted space-y-1">
-          <span className="text-xs font-bold text-lilac-200/70 uppercase tracking-wide">
+        <div className="p-4 sm:p-5 bg-surface rounded-[12px] border border-border shadow-card space-y-0.5">
+          <span className="text-xs font-medium text-text-secondary uppercase tracking-wider">
             Hours Swapped
           </span>
-          <div className="text-3xl font-black text-flame-400">{user.hoursSwapped}h</div>
-          <p className="text-[11px] text-lilac-200/50 font-medium">Mutual peer learning</p>
+          <div className="text-2xl sm:text-3xl font-bold text-primary">{user.hoursSwapped}h</div>
+          <p className="text-[11px] text-text-secondary">Mutual peer learning</p>
         </div>
 
-        <div className="p-5 bg-[#0c1e34]/90 backdrop-blur-md rounded-2xl border border-lilac-300/20 shadow-lifted space-y-1">
-          <span className="text-xs font-bold text-lilac-200/70 uppercase tracking-wide">
+        <div className="p-4 sm:p-5 bg-surface rounded-[12px] border border-border shadow-card space-y-0.5">
+          <span className="text-xs font-medium text-text-secondary uppercase tracking-wider">
             Community Rating
           </span>
-          <div className="flex items-center gap-1.5 text-3xl font-black text-white">
-            <Star className="w-6 h-6 text-amber-400 fill-amber-400" />
+          <div className="flex items-center gap-1.5 text-2xl sm:text-3xl font-bold text-text-primary">
+            <Star className="w-5 h-5 text-rating fill-rating" />
             <span>{user.rating.toFixed(1)}</span>
           </div>
-          <p className="text-[11px] text-lilac-200/50 font-medium">From {user.reviewCount} peer reviews</p>
+          <p className="text-[11px] text-text-secondary">From {user.reviewCount} peer reviews</p>
         </div>
 
-        <div className="p-5 bg-[#0c1e34]/90 backdrop-blur-md rounded-2xl border border-lilac-300/20 shadow-lifted space-y-1">
-          <span className="text-xs font-bold text-lilac-200/70 uppercase tracking-wide">
+        <div className="p-4 sm:p-5 bg-surface rounded-[12px] border border-border shadow-card space-y-0.5">
+          <span className="text-xs font-medium text-text-secondary uppercase tracking-wider">
             Active Wishlist
           </span>
-          <div className="text-3xl font-black text-purple-300">{user.learnSkills.length}</div>
-          <p className="text-[11px] text-lilac-200/50 font-medium">Skills targeted for swap</p>
+          <div className="text-2xl sm:text-3xl font-bold text-text-primary">{user.learnSkills.length}</div>
+          <p className="text-[11px] text-text-secondary">Skills targeted for swap</p>
         </div>
       </div>
 
-      {/* Action Alerts (Pending incoming requests or pending reviews) */}
+      {/* Action Alerts */}
       {pendingRequests.length > 0 && (
-        <div className="p-5 bg-amber-950/70 border border-amber-500/40 rounded-3xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 backdrop-blur-md">
-          <div className="flex items-start gap-3.5">
-            <div className="p-2 rounded-xl bg-amber-900/60 text-amber-300 mt-0.5 border border-amber-500/30">
-              <AlertCircle className="w-5 h-5" />
+        <div className="p-4 sm:p-5 bg-primary-soft border border-border rounded-[12px] flex flex-col sm:flex-row sm:items-center justify-between gap-3.5">
+          <div className="flex items-start gap-3">
+            <div className="p-2 rounded-[8px] bg-surface text-primary border border-border mt-0.5">
+              <AlertCircle className="w-4 h-4" />
             </div>
             <div>
-              <h4 className="font-bold text-amber-200 text-sm">
+              <h4 className="font-semibold text-text-primary text-sm">
                 You have {pendingRequests.length} pending exchange request{pendingRequests.length > 1 ? 's' : ''}
               </h4>
-              <p className="text-xs text-amber-200/80">
+              <p className="text-xs text-text-secondary">
                 Peers have proposed reciprocal sessions with you. Review and accept or propose an alternative time.
               </p>
             </div>
@@ -243,24 +240,24 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
             size="sm"
             variant="primary"
             onClick={() => onNavigate('sessions')}
-            className="shrink-0 self-start sm:self-center shadow-flame"
+            className="shrink-0 self-start sm:self-center"
           >
-            Review Pending Requests
+            Review Requests
           </Button>
         </div>
       )}
 
       {needsReviewSessions.length > 0 && (
-        <div className="p-5 bg-flame-950/70 border border-flame-500/40 rounded-3xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 backdrop-blur-md">
-          <div className="flex items-start gap-3.5">
-            <div className="p-2 rounded-xl bg-flame-900/60 text-flame-300 mt-0.5 border border-flame-500/30">
-              <Star className="w-5 h-5 fill-flame-400 text-flame-400" />
+        <div className="p-4 sm:p-5 bg-surface-muted border border-border rounded-[12px] flex flex-col sm:flex-row sm:items-center justify-between gap-3.5">
+          <div className="flex items-start gap-3">
+            <div className="p-2 rounded-[8px] bg-surface text-rating border border-border mt-0.5">
+              <Star className="w-4 h-4 fill-rating" />
             </div>
             <div>
-              <h4 className="font-bold text-white text-sm">
+              <h4 className="font-semibold text-text-primary text-sm">
                 Leave feedback for completed session
               </h4>
-              <p className="text-xs text-lilac-200/80">
+              <p className="text-xs text-text-secondary">
                 Your exchange with{' '}
                 {needsReviewSessions[0].senderId === user.id
                   ? needsReviewSessions[0].receiverName
@@ -273,7 +270,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
             size="sm"
             variant="primary"
             onClick={() => handleOpenReview(needsReviewSessions[0])}
-            className="shrink-0 self-start sm:self-center shadow-flame"
+            className="shrink-0 self-start sm:self-center"
           >
             Leave Review
           </Button>
@@ -281,15 +278,15 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
       )}
 
       {/* Grid: Upcoming Sessions & Recommended Reciprocal Matches */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Column (2 Cols): Recommended Matches */}
-        <div className="lg:col-span-2 space-y-4">
+        <div className="lg:col-span-2 space-y-3.5">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-lg font-black text-white uppercase tracking-tight">
+              <h2 className="text-base sm:text-lg font-bold text-text-primary">
                 Recommended Reciprocal Matches
               </h2>
-              <p className="text-xs text-lilac-200/70">
+              <p className="text-xs text-text-secondary">
                 Peers with mutual skill alignment calculated from your teach and learn wishlist.
               </p>
             </div>
@@ -297,7 +294,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
               variant="ghost"
               size="sm"
               onClick={() => onNavigate('matches')}
-              className="text-xs text-flame-400 hover:text-white"
+              className="text-xs text-primary hover:text-primary-hover"
             >
               View all ({matches.length})
             </Button>
@@ -316,18 +313,18 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
         </div>
 
         {/* Right Column (1 Col): Upcoming Sessions & Status */}
-        <div className="space-y-6">
+        <div className="space-y-5">
           {/* Upcoming Confirmed Sessions */}
           <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <h3 className="text-base font-black text-white uppercase tracking-tight">
+              <h3 className="text-sm font-semibold text-text-primary">
                 Upcoming Confirmed
               </h3>
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => onNavigate('sessions')}
-                className="text-xs text-lilac-200/70 hover:text-white"
+                className="text-xs text-text-secondary"
               >
                 All sessions
               </Button>
@@ -345,17 +342,17 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
                 ))}
               </div>
             ) : (
-              <div className="p-6 bg-[#0c1e34]/90 backdrop-blur-md rounded-2xl border border-lilac-300/20 text-center space-y-2">
-                <Calendar className="w-8 h-8 text-lilac-400/40 mx-auto" />
-                <h4 className="text-xs font-bold text-white">No sessions scheduled yet</h4>
-                <p className="text-[11px] text-lilac-200/70">
+              <div className="p-5 bg-surface rounded-[12px] border border-border text-center space-y-1.5 shadow-card">
+                <Calendar className="w-6 h-6 text-text-secondary/50 mx-auto" />
+                <h4 className="text-xs font-semibold text-text-primary">No sessions scheduled yet</h4>
+                <p className="text-[11px] text-text-secondary">
                   Send an exchange request to any recommended match to book a slot.
                 </p>
                 <Button
-                  variant="outline"
+                  variant="secondary"
                   size="sm"
                   onClick={() => onNavigate('matches')}
-                  className="mt-2 text-xs font-bold"
+                  className="mt-1 text-xs"
                 >
                   Find a Partner
                 </Button>
@@ -364,26 +361,26 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
           </div>
 
           {/* Quick Learning Wishlist Card */}
-          <div className="p-5 bg-[#0c1e34]/90 backdrop-blur-md rounded-2xl border border-lilac-300/20 space-y-3">
+          <div className="p-4 bg-surface rounded-[12px] border border-border shadow-card space-y-2.5">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-black text-white uppercase tracking-wider">
+              <span className="text-xs font-semibold text-text-primary uppercase tracking-wider">
                 Your Learning Wishlist
               </span>
               <button
                 onClick={() => onNavigate('profile')}
-                className="text-xs text-flame-400 hover:text-flame-300 font-bold transition-colors"
+                className="text-xs text-primary hover:text-primary-hover font-medium transition-colors"
               >
                 Manage
               </button>
             </div>
-            <div className="space-y-2">
+            <div className="space-y-1.5">
               {user.learnSkills.map((skill) => (
                 <div
                   key={skill.id}
-                  className="p-2.5 rounded-xl bg-[#071322] border border-lilac-300/15 flex items-center justify-between text-xs"
+                  className="p-2 rounded-[8px] bg-surface-muted border border-border flex items-center justify-between text-xs"
                 >
-                  <span className="font-semibold text-white">{skill.name}</span>
-                  <span className="text-[10px] font-bold uppercase text-purple-300 bg-purple-950/70 px-2 py-0.5 rounded border border-purple-500/30">
+                  <span className="font-medium text-text-primary">{skill.name}</span>
+                  <span className="text-[10px] font-semibold text-text-secondary bg-surface px-1.5 py-0.5 rounded border border-border">
                     {skill.priority}
                   </span>
                 </div>

@@ -4,51 +4,66 @@
 
 @layer base {
   :root {
-    --canvas: #120302;
-    --canvas-card: #0c1e34;
-    --flame-primary: #f95738;
-    --lilac-secondary: #e8daff;
-    --seal-accent: #0c1e34;
-    --border-subtle: rgba(232, 218, 255, 0.16);
-    --text-primary: #ffffff;
-    --text-secondary: #d4d0e0;
+    /* Base surfaces */
+    --background: #F7F4EE;
+    --surface: #FFFEFB;
+    --surface-muted: #EFE9DF;
+    --border: #E4DACE;
+
+    /* Typography */
+    --text-primary: #292A27;
+    --text-secondary: #716D66;
+
+    /* Brand */
+    --primary: #C66A4A;
+    --primary-hover: #A95338;
+    --primary-soft: #EEDDD2;
+
+    /* Supporting colors */
+    --success: #71836D;
+    --success-soft: #E5EDE4;
+    --rating: #D6A75D;
+
+    /* Shape and elevation */
+    --radius-card: 14px;
+    --radius-button: 10px;
+    --radius-input: 9px;
+    --shadow-card: 0 4px 16px rgba(41, 42, 39, 0.05);
   }
 
   html {
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   body {
-    background-color: #0d0201;
-    background-image: radial-gradient(ellipse at 50% -15%, #4e1208 0%, #290804 42%, #120302 80%, #070101 100%);
-    background-attachment: fixed;
-    color: #ffffff;
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #F7F4EE;
+    color: #292A27;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
   }
 }
 
-/* Custom crisp focus outline */
+/* Accessible focus ring using brand Terracotta */
 *:focus-visible {
-  outline: 2px solid #f95738;
+  outline: 2px solid #C66A4A;
   outline-offset: 2px;
 }
 
-/* Scrollbar styling for dark theme */
+/* Clean minimal scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0d0201;
+  background: #F7F4EE;
 }
 ::-webkit-scrollbar-thumb {
-  background: #3d140e;
+  background: #E4DACE;
   border-radius: 9999px;
-  border: 2px solid #0d0201;
+  border: 2px solid #F7F4EE;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #f95738;
+  background: #C66A4A;
 }

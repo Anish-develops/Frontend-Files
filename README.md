@@ -8,11 +8,13 @@
 ## Highlights
 
 - **Strict 1:1 Reciprocal Matching**: Highlights two-way skill alignment ("You teach X; they teach Y") with contextual compatibility scoring and plain-language fit explanations.
-- **Bold, High-Taste Editorial Design**:
-  - **Primary Canvas**: Deep dark orange-reddish gradient (`radial-gradient(ellipse at 50% -15%, #4e1208 0%, #290804 42%, #120302 80%, #070101 100%)`) with luminous flame action buttons (`#ff6b4d` → `#ea3a18` → `#c5280b`).
-  - **Secondary**: Soft Lilac / Light Purple (`#e8daff`, `#d7beff`) for reciprocal score pills (`99% Fit`), category chips, and section labels.
-  - **Accent**: Deep Seal Blue / Navy (`#0c1e34`, `#071322`) for card surfaces, modal dialogs, and the floating navigation capsule.
-  - **Typography & Positioning**: Plus Jakarta Sans, massive statement headline (`MASTERY SWAPPED, NOT BOUGHT.`), QuantraLogic asymmetric layout with interactive live simulator, and T. Edwards 3-discipline photo showcase.
+- **Warm Minimalist, High-Taste Editorial Design**:
+  - **Base Canvas**: Warm Ivory (`#F7F4EE`) providing an inviting, calm, and readable background.
+  - **Surfaces**: Soft White (`#FFFEFB`) elevated surfaces with 1px Warm Borders (`#E4DACE`) and restrained shadows (`0 4px 16px rgba(41, 42, 39, 0.05)`).
+  - **Primary Brand / Action**: Terracotta (`#C66A4A`, hover `#A95338`, 10px radius) for key calls to action and primary navigation buttons.
+  - **Semantic Accents**: Pale Sage (`#E5EDE4`) with Muted Sage (`#71836D`) text for reciprocal matches and positive statuses; Soft Peach (`#EEDDD2`) for skill chips.
+  - **Ratings & Highlights**: Muted Gold (`#D6A75D`) for star ratings and reviews.
+  - **Typography**: Inter / sans-serif with high-contrast Charcoal (`#292A27`) headings and Warm Grey (`#716D66`) body copy.
 - **Production-Ready**: Demo switcher shortcuts retired from the primary UI; complete authentication flows (`/login` and `/signup` with initial skill onboarding) ready for direct REST backend connection.
 - **Dual-Mode API Architecture**: Operates autonomously offline using browser storage (`localStorage`), and connects seamlessly to any live REST API by setting `VITE_API_BASE_URL`.
 - **Complete Feature Set (11 Core Screens & Modals)**:

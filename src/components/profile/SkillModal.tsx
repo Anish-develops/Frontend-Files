@@ -89,7 +89,7 @@ export const SkillModal: React.FC<SkillModalProps> = ({
       }
       maxWidth="md"
     >
-      <form onSubmit={handleSubmit} className="space-y-4 text-white">
+      <form onSubmit={handleSubmit} className="space-y-4 text-text-primary">
         <Input
           label="Skill Name"
           placeholder={mode === 'teach' ? 'e.g. React Architecture, UI Prototyping' : 'e.g. Conversational Italian, System Design'}
@@ -100,13 +100,13 @@ export const SkillModal: React.FC<SkillModalProps> = ({
         />
 
         <div>
-          <label className="block text-xs font-bold text-lilac-200 tracking-wider uppercase mb-1.5">
+          <label className="block text-xs font-medium text-text-primary mb-1.5">
             Category
           </label>
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value as SkillCategory)}
-            className="w-full h-11 rounded-xl border border-lilac-300/20 bg-[#071322] px-3.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-flame-500 font-bold"
+            className="w-full h-10 rounded-[9px] border border-border bg-surface px-3 text-sm text-text-primary focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary font-medium shadow-subtle"
           >
             {CATEGORIES.map((cat) => (
               <option key={cat} value={cat}>
@@ -118,7 +118,7 @@ export const SkillModal: React.FC<SkillModalProps> = ({
 
         {mode === 'teach' ? (
           <div>
-            <label className="block text-xs font-bold text-lilac-200 tracking-wider uppercase mb-1.5">
+            <label className="block text-xs font-medium text-text-primary mb-1.5">
               Proficiency Level
             </label>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -128,10 +128,10 @@ export const SkillModal: React.FC<SkillModalProps> = ({
                     key={lvl}
                     type="button"
                     onClick={() => setProficiency(lvl)}
-                    className={`py-2 px-2 rounded-xl border text-xs font-bold transition-all ${
+                    className={`py-2 px-2 rounded-[8px] border text-xs font-medium transition-colors ${
                       proficiency === lvl
-                        ? 'border-flame-500 bg-flame-950/80 text-flame-300 ring-1 ring-flame-500'
-                        : 'border-lilac-300/20 bg-[#071322] text-lilac-200/80 hover:text-white'
+                        ? 'border-primary bg-primary-soft text-primary-hover ring-1 ring-primary'
+                        : 'border-border bg-surface text-text-secondary hover:text-text-primary hover:bg-surface-muted'
                     }`}
                   >
                     {lvl}
@@ -142,7 +142,7 @@ export const SkillModal: React.FC<SkillModalProps> = ({
           </div>
         ) : (
           <div>
-            <label className="block text-xs font-bold text-lilac-200 tracking-wider uppercase mb-1.5">
+            <label className="block text-xs font-medium text-text-primary mb-1.5">
               Learning Priority
             </label>
             <div className="grid grid-cols-3 gap-2">
@@ -151,13 +151,13 @@ export const SkillModal: React.FC<SkillModalProps> = ({
                   key={lvl}
                   type="button"
                   onClick={() => setPriority(lvl)}
-                  className={`py-2 px-2 rounded-xl border text-xs font-bold transition-all ${
+                  className={`py-2 px-2 rounded-[8px] border text-xs font-medium transition-colors ${
                     priority === lvl
-                      ? 'border-purple-400 bg-purple-950/80 text-purple-200 ring-1 ring-purple-400'
-                      : 'border-lilac-300/20 bg-[#071322] text-lilac-200/80 hover:text-white'
+                      ? 'border-primary bg-primary-soft text-primary-hover ring-1 ring-primary'
+                      : 'border-border bg-surface text-text-secondary hover:text-text-primary hover:bg-surface-muted'
                   }`}
                 >
-                  {lvl} Priority
+                  {lvl}
                 </button>
               ))}
             </div>
@@ -165,23 +165,23 @@ export const SkillModal: React.FC<SkillModalProps> = ({
         )}
 
         <Textarea
-          label={mode === 'teach' ? 'Topics / Highlights (Optional)' : 'Specific Learning Goal (Optional)'}
+          label={mode === 'teach' ? 'Description & Mastery Notes' : 'Learning Goals & Focus'}
           placeholder={
             mode === 'teach'
-              ? 'e.g. Custom hooks, state management, container queries...'
-              : 'e.g. Master auto layout components and color token variables in Figma...'
+              ? 'Briefly describe your practical experience and what you can walk a peer through...'
+              : 'What specific questions or outcomes are you hoping to achieve in 1:1 sessions?'
           }
           rows={3}
           value={details}
           onChange={(e) => setDetails(e.target.value)}
         />
 
-        <div className="flex items-center justify-end gap-2 pt-3 border-t border-lilac-200/10">
-          <Button type="button" variant="outline" size="md" onClick={onClose} className="font-bold">
+        <div className="flex items-center justify-end gap-2.5 pt-3 border-t border-border">
+          <Button type="button" variant="secondary" size="md" onClick={onClose}>
             Cancel
           </Button>
-          <Button type="submit" variant="primary" size="md" className="font-bold shadow-flame">
-            Save Skill
+          <Button type="submit" variant="primary" size="md">
+            {mode === 'teach' ? 'Save Teachable Skill' : 'Save Learning Target'}
           </Button>
         </div>
       </form>

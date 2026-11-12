@@ -28,40 +28,38 @@ This repository houses the **production-grade frontend web application**. It is 
 
 ## 3. Design System & Visual Hierarchy
 
-The platform features a bold visual design based on the specified color palette and editorial layouts:
+The platform features a **Warm Minimalist, Professional SaaS, Human-centered** visual identity inspired by high-quality editorial websites:
 
 ### 3.1 Color Palette & Token Roles
 
 ```mermaid
 flowchart LR
-    A["Primary Canvas<br/>Dark Orange-Red Gradient<br/>#4e1208 → #290804 → #0d0201"] --- B["Accent Surfaces<br/>Deep Seal Navy<br/>#0c1e34 & #071322"]
-    B --- C["Secondary Accents<br/>Light Purple / Lilac<br/>#e8daff & #d7beff"]
-    C --- D["Primary Actions<br/>Flame Gradient<br/>#ff6b4d → #f95738 → #c5280b"]
+    A["Warm Ivory Canvas<br/>#F7F4EE"] --- B["Soft White Surfaces<br/>#FFFEFB<br/>Warm Border #E4DACE"]
+    B --- C["Terracotta Brand<br/>#C66A4A (Hover #A95338)<br/>Soft Peach #EEDDD2"]
+    C --- D["Semantic Progress<br/>Pale Sage #E5EDE4<br/>Muted Sage #71836D"]
 ```
 
-1. **Primary Color (Dark Orange-Reddish Gradient on Canvas)**:
-   - Applied directly to the `<body>` canvas:
-     `radial-gradient(ellipse at 50% -15%, #4e1208 0%, #290804 42%, #120302 80%, #070101 100%)`
-   - Paired with vibrant flame action accents (`#ff6b4d` to `#ea3a18` to `#c5280b`) for primary buttons, brand emblems, and title highlights.
-2. **Secondary Color (Light Purple / Soft Lilac)**:
-   - Hex codes: `#faf7ff`, `#f3ebff`, `#e8daff`, `#d7beff`.
-   - Used for reciprocal compatibility score badges (`99% Reciprocal Fit`), category pills, status borders, and subtle glowing tag highlights.
-3. **Accent Color (Deep Seal Blue / Navy)**:
-   - Hex codes: `#0c1e34`, `#071322`, `#142842`.
-   - Used for all major card surfaces, floating capsule header, modal dialogs, and structured containers (`bg-[#0c1e34]/90 backdrop-blur-md border border-lilac-300/20`).
-4. **Legibility & High Contrast**:
-   - Zero low-contrast white-on-white text.
-   - Headings are crisp white (`text-white`) with high-contrast flame gradients.
-   - Body copy and labels are clear light lilac and off-white (`text-lilac-100`, `text-lilac-200/80`), guaranteeing 7:1+ contrast on dark surfaces.
+1. **Base Surfaces**:
+   - **Warm Ivory (`#F7F4EE`)**: The dominant canvas background across all pages, creating visual calm and reducing fatigue.
+   - **Soft White (`#FFFEFB`)**: Elevated cards, navigation header, dropdowns, and modal dialogs with a 1px Warm Border (`#E4DACE`).
+   - **Sand Beige (`#EFE9DF`)**: Secondary panels, sub-section groupings, and tab containers.
+2. **Brand & Actions**:
+   - **Terracotta (`#C66A4A`)**: The primary brand accent and CTA fill (10px border radius, subtle hover transition to Burnt Clay `#A95338`).
+   - **Soft Peach (`#EEDDD2`)**: Skill chips, match highlights, and active navigation indicators.
+3. **Supporting & Semantic Colors**:
+   - **Pale Sage (`#E5EDE4`) & Muted Sage (`#71836D`)**: Positive reciprocal match badges, confirmed session states, and verified reciprocal indicators.
+   - **Muted Gold (`#D6A75D`)**: Community star ratings, reviews, and small achievement details.
+   - **Charcoal (`#292A27`)**: Main page headings and primary typography.
+   - **Warm Grey (`#716D66`)**: Body text, descriptions, captions, and secondary labels.
 
-### 3.2 Visual Positioning (QuantraLogic & T. Edwards Layouts)
-- **Floating Top Capsule Navbar**: Frosted Navy capsule centered at the top containing brand logo, route pills (`Overview`, `Explore Skills`, `How It Works`), and auth actions.
-- **Asymmetric Hero Layout**:
-  - **Left (7 cols)**: Massive defining uppercase statement typography (`MASTERY SWAPPED, NOT BOUGHT.`), value proposition paragraph, dual CTA buttons, and trust guarantees.
-  - **Right (5 cols)**: Interactive **Live Reciprocal Match Engine** preview card allowing visitors to select teach/learn crafts and instantly see two-way fit calculation.
-- **Curated Specialists Showcase**: 3-column real photography cards showcasing real specialists (Elena Rostova in Design Systems, Marcus Vance in Distributed Data, Sofia Morales in Languages & UX) with 5.0 ratings and exchange tags.
-- **3-Step Exchange Protocol**: 3 navy cards with oversized flame numbers (`01`, `02`, `03`) explaining profile publication, two-way matching, and 1:1 session execution.
-- **Bold Closing Banner**: Multi-tone gradient banner with direct calls to action.
+### 3.2 Visual Hierarchy & Component Guidelines
+- **Navigation**: Soft White background, subtle bottom border (`#E4DACE`), Charcoal brand and menu labels, Terracotta logo accent, and clean action buttons.
+- **Hero & Landing Layout**:
+  - **Left (7 cols)**: Restrained editorial statement typography (`Mastery swapped, not bought.`), concise value proposition, dual action buttons, and trust guarantees.
+  - **Right (5 cols)**: Interactive **Live Reciprocal Match Engine** simulator previewing two-way compatibility calculation in real time.
+- **Curated Specialists Showcase**: 3-column real photography cards showcasing real specialists (Design Systems, Engineering & Data, Languages & Strategy) with Muted Gold ratings and reciprocal tags.
+- **3-Step Exchange Protocol**: Soft White cards with clean Terracotta numbers (`01`, `02`, `03`) explaining profile publication, two-way matching, and 1:1 session execution.
+- **Closing Banner**: Restrained Warm Beige container with Charcoal headline and direct Terracotta action button.
 
 ---
 

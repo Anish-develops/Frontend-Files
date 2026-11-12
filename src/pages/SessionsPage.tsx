@@ -115,19 +115,19 @@ export const SessionsPage: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6 pb-16 text-white">
+    <div className="space-y-6 pb-16 text-text-primary">
       {/* Header */}
       <div>
-        <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-white uppercase">
+        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-text-primary">
           Exchange Sessions
         </h1>
-        <p className="text-xs sm:text-sm text-lilac-200/80 mt-1 font-medium">
+        <p className="text-xs sm:text-sm text-text-secondary mt-0.5">
           Coordinate, accept, reschedule, and review your reciprocal learning appointments.
         </p>
       </div>
 
       {/* Tabs */}
-      <div className="border-b border-lilac-200/10 pb-4">
+      <div className="border-b border-border pb-3">
         <Tabs
           tabs={[
             {
@@ -158,7 +158,7 @@ export const SessionsPage: React.FC = () => {
 
       {/* Session Cards List */}
       {displayedSessions.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {displayedSessions.map((session) => (
             <SessionCard
               key={session.id}
@@ -177,15 +177,15 @@ export const SessionsPage: React.FC = () => {
         </div>
       ) : (
         /* Empty State */
-        <div className="p-12 bg-[#0c1e34]/90 backdrop-blur-md rounded-3xl border border-lilac-300/20 text-center space-y-4 max-w-md mx-auto shadow-lifted">
-          <div className="w-14 h-14 rounded-2xl bg-white/5 text-lilac-300 flex items-center justify-center mx-auto border border-lilac-300/20">
-            <Calendar className="w-7 h-7 text-lilac-300" />
+        <div className="p-10 bg-surface rounded-[14px] border border-border text-center space-y-3 max-w-md mx-auto shadow-card">
+          <div className="w-10 h-10 rounded-full bg-surface-muted text-text-secondary flex items-center justify-center mx-auto border border-border">
+            <Calendar className="w-5 h-5 text-text-secondary" />
           </div>
           <div className="space-y-1">
-            <h3 className="text-base font-bold text-white capitalize">
+            <h3 className="text-sm font-semibold text-text-primary capitalize">
               No {activeTab} sessions
             </h3>
-            <p className="text-xs text-lilac-200/75 leading-relaxed">
+            <p className="text-xs text-text-secondary leading-relaxed">
               {activeTab === 'pending'
                 ? 'You have no pending requests waiting for your response.'
                 : activeTab === 'confirmed'

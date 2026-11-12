@@ -113,37 +113,37 @@ export const MyProfilePage: React.FC = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8 pb-16 text-white">
+    <div className="max-w-4xl mx-auto space-y-6 pb-16 text-text-primary">
       {/* Header */}
       <div>
-        <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-white uppercase">
+        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-text-primary">
           My Profile & Skills
         </h1>
-        <p className="text-xs sm:text-sm text-lilac-200/80 mt-1 font-medium">
+        <p className="text-xs sm:text-sm text-text-secondary mt-0.5">
           Manage your reciprocal profile, teachable skills, wishlist, and availability.
         </p>
       </div>
 
-      <form onSubmit={handleSaveProfile} className="space-y-8">
+      <form onSubmit={handleSaveProfile} className="space-y-6">
         {/* Basic Info Card */}
-        <div className="p-7 sm:p-9 bg-[#0c1e34]/90 backdrop-blur-md rounded-3xl border border-lilac-300/20 shadow-lifted space-y-6">
-          <h2 className="text-lg font-black text-white pb-3 border-b border-lilac-200/10 uppercase tracking-tight">
+        <div className="p-5 sm:p-7 bg-surface rounded-[14px] border border-border shadow-card space-y-4">
+          <h2 className="text-base font-semibold text-text-primary pb-2.5 border-b border-border">
             Personal Information
           </h2>
 
-          <div className="flex items-center gap-4">
-            <Avatar src={user.avatar} name={name} size="xl" />
-            <div className="space-y-1">
-              <span className="text-xs font-bold text-lilac-200 uppercase tracking-wider">
+          <div className="flex items-center gap-3.5">
+            <Avatar src={user.avatar} name={name} size="lg" />
+            <div className="space-y-0.5">
+              <span className="text-xs font-medium text-text-primary">
                 Profile Avatar
               </span>
-              <p className="text-xs text-lilac-200/60">
+              <p className="text-xs text-text-secondary">
                 Connected with your verified SkillSwap account.
               </p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
             <Input
               label="Full Name"
               value={name}
@@ -159,7 +159,7 @@ export const MyProfilePage: React.FC = () => {
             />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
             <Input
               label="Location / Timezone"
               value={location}
@@ -167,13 +167,13 @@ export const MyProfilePage: React.FC = () => {
               placeholder="e.g. Seattle, WA (PST)"
             />
             <div>
-              <label className="block text-xs font-bold text-lilac-200 tracking-wider uppercase mb-1.5">
+              <label className="block text-xs font-medium text-text-primary mb-1.5">
                 Profile Visibility
               </label>
               <select
                 value={visibility}
                 onChange={(e) => setVisibility(e.target.value as ProfileVisibility)}
-                className="w-full h-11 rounded-xl border border-lilac-300/20 bg-[#071322] px-3.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-flame-500 font-bold"
+                className="w-full h-10 rounded-[9px] border border-border bg-surface px-3 text-sm text-text-primary focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary font-medium shadow-subtle"
               >
                 <option value="public">Public (Visible to all members)</option>
                 <option value="members_only">Members Only (Requires login)</option>
@@ -186,26 +186,26 @@ export const MyProfilePage: React.FC = () => {
             label="Bio & Background"
             value={bio}
             onChange={(e) => setBio(e.target.value)}
-            rows={4}
+            rows={3}
             placeholder="Introduce your domain expertise and learning goals..."
           />
 
           {/* Interests Manager */}
-          <div className="space-y-2 pt-2 border-t border-lilac-200/10">
-            <label className="block text-xs font-bold text-lilac-200 tracking-wider uppercase">
+          <div className="space-y-2 pt-2 border-t border-border">
+            <label className="block text-xs font-medium text-text-primary">
               Focus Areas & Interests
             </label>
             <div className="flex flex-wrap gap-1.5 mb-2">
               {interests.map((tag) => (
                 <span
                   key={tag}
-                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-bold bg-[#071322] text-lilac-200 border border-lilac-300/20"
+                  className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-[6px] text-xs font-medium bg-surface-muted text-text-primary border border-border"
                 >
                   <span>{tag}</span>
                   <button
                     type="button"
                     onClick={() => handleRemoveInterest(tag)}
-                    className="text-lilac-400 hover:text-rose-400 p-0.5"
+                    className="text-text-secondary hover:text-danger p-0.5"
                   >
                     ×
                   </button>
@@ -224,14 +224,14 @@ export const MyProfilePage: React.FC = () => {
                     handleAddInterest();
                   }
                 }}
-                className="flex-1 h-10 px-3 text-xs rounded-xl border border-lilac-300/20 bg-[#071322] text-white placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-flame-500"
+                className="flex-1 h-9 px-3 text-xs rounded-[8px] border border-border bg-surface text-text-primary placeholder:text-text-secondary/50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary shadow-subtle"
               />
               <Button
                 type="button"
-                variant="outline"
+                variant="secondary"
                 size="sm"
                 onClick={handleAddInterest}
-                className="text-xs font-bold h-10"
+                className="text-xs h-9"
               >
                 Add
               </Button>
@@ -240,13 +240,13 @@ export const MyProfilePage: React.FC = () => {
         </div>
 
         {/* Teachable Skills Section */}
-        <div className="p-7 sm:p-9 bg-[#0c1e34]/90 backdrop-blur-md rounded-3xl border border-lilac-300/20 shadow-lifted space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-lilac-200/10">
+        <div className="p-5 sm:p-7 bg-surface rounded-[14px] border border-border shadow-card space-y-3.5">
+          <div className="flex items-center justify-between pb-2.5 border-b border-border">
             <div>
-              <h2 className="text-base font-black text-white uppercase tracking-tight">
+              <h2 className="text-sm sm:text-base font-semibold text-text-primary">
                 Skills You Can Teach ({user.teachSkills.length})
               </h2>
-              <p className="text-xs text-lilac-200/70 font-medium">
+              <p className="text-xs text-text-secondary">
                 These skills will match with peers looking to learn your craft.
               </p>
             </div>
@@ -258,14 +258,14 @@ export const MyProfilePage: React.FC = () => {
                 setSkillModalMode('teach');
                 setIsSkillModalOpen(true);
               }}
-              className="gap-1.5 font-bold"
+              className="gap-1.5 text-xs"
             >
               <Plus className="w-3.5 h-3.5" />
               <span>Add Teachable Skill</span>
             </Button>
           </div>
 
-          <div className="flex flex-wrap gap-2 pt-2">
+          <div className="flex flex-wrap gap-2 pt-1">
             {user.teachSkills.map((skill) => (
               <SkillTag
                 key={skill.id}
@@ -278,13 +278,13 @@ export const MyProfilePage: React.FC = () => {
         </div>
 
         {/* Skills to Learn (Wishlist) */}
-        <div className="p-7 sm:p-9 bg-[#0c1e34]/90 backdrop-blur-md rounded-3xl border border-lilac-300/20 shadow-lifted space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-lilac-200/10">
+        <div className="p-5 sm:p-7 bg-surface rounded-[14px] border border-border shadow-card space-y-3.5">
+          <div className="flex items-center justify-between pb-2.5 border-b border-border">
             <div>
-              <h2 className="text-base font-black text-white uppercase tracking-tight">
+              <h2 className="text-sm sm:text-base font-semibold text-text-primary">
                 Skills You Want to Learn ({user.learnSkills.length})
               </h2>
-              <p className="text-xs text-lilac-200/70 font-medium">
+              <p className="text-xs text-text-secondary">
                 Our reciprocal algorithm uses these to find skilled teachers.
               </p>
             </div>
@@ -296,14 +296,14 @@ export const MyProfilePage: React.FC = () => {
                 setSkillModalMode('learn');
                 setIsSkillModalOpen(true);
               }}
-              className="gap-1.5 font-bold"
+              className="gap-1.5 text-xs"
             >
               <Plus className="w-3.5 h-3.5" />
               <span>Add Skill to Wishlist</span>
             </Button>
           </div>
 
-          <div className="flex flex-wrap gap-2 pt-2">
+          <div className="flex flex-wrap gap-2 pt-1">
             {user.learnSkills.map((skill) => (
               <SkillTag
                 key={skill.id}
@@ -316,9 +316,9 @@ export const MyProfilePage: React.FC = () => {
         </div>
 
         {/* Availability Card */}
-        <div className="p-7 sm:p-9 bg-[#0c1e34]/90 backdrop-blur-md rounded-3xl border border-lilac-300/20 shadow-lifted space-y-4">
-          <h2 className="text-base font-black text-white pb-3 border-b border-lilac-200/10 flex items-center gap-2 uppercase tracking-tight">
-            <Calendar className="w-4 h-4 text-lilac-400" />
+        <div className="p-5 sm:p-7 bg-surface rounded-[14px] border border-border shadow-card space-y-3.5">
+          <h2 className="text-sm sm:text-base font-semibold text-text-primary pb-2.5 border-b border-border flex items-center gap-2">
+            <Calendar className="w-4 h-4 text-text-secondary" />
             <span>Availability Window</span>
           </h2>
           <Input
@@ -330,13 +330,13 @@ export const MyProfilePage: React.FC = () => {
         </div>
 
         {/* Save Bar */}
-        <div className="flex items-center justify-end gap-3 pt-2">
+        <div className="flex items-center justify-end gap-3 pt-1">
           <Button
             type="submit"
             variant="primary"
             size="lg"
             isLoading={isSaving}
-            className="gap-2 shadow-flame font-bold"
+            className="gap-2"
           >
             <Save className="w-4 h-4" />
             <span>Save Profile Changes</span>

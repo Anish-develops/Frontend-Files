@@ -39,24 +39,24 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
   };
 
   return (
-    <div className="min-h-[75vh] flex items-center justify-center px-4 py-12 text-white">
-      <div className="w-full max-w-md space-y-6">
+    <div className="min-h-[75vh] flex items-center justify-center px-4 py-10 text-text-primary">
+      <div className="w-full max-w-md space-y-5">
         {/* Brand header */}
-        <div className="text-center space-y-2">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-flame-gradient text-white shadow-flame mb-2">
-            <ArrowLeftRight className="w-6 h-6" />
+        <div className="text-center space-y-1.5">
+          <div className="inline-flex items-center justify-center w-10 h-10 rounded-[10px] bg-primary text-white shadow-subtle mb-1">
+            <ArrowLeftRight className="w-5 h-5" />
           </div>
-          <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-white uppercase">
-            Sign In to SkillSwap
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-text-primary">
+            Sign in to SkillSwap
           </h1>
-          <p className="text-xs text-lilac-200/80">
+          <p className="text-xs text-text-secondary">
             Access your 1:1 reciprocal skill exchange network and dashboard.
           </p>
         </div>
 
-        {/* Main Login Form in Accent Navy Card */}
-        <div className="rounded-3xl border border-lilac-300/25 bg-[#0c1e34]/95 p-8 shadow-2xl space-y-5 backdrop-blur-xl">
-          <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Main Login Form in Soft White Card */}
+        <div className="rounded-[14px] border border-border bg-surface p-7 shadow-card space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-3.5">
             <Input
               label="Email Address"
               type="email"
@@ -67,11 +67,11 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
             />
 
             <div>
-              <div className="flex items-center justify-between mb-1.5">
-                <label className="block text-xs font-bold text-lilac-200 tracking-wider uppercase">
+              <div className="flex items-center justify-between mb-1">
+                <label className="block text-xs font-medium text-text-primary">
                   Password
                 </label>
-                <span className="text-[11px] text-lilac-300/80 hover:text-white font-medium cursor-pointer transition-colors">
+                <span className="text-[11px] text-text-secondary hover:text-primary cursor-pointer transition-colors">
                   Forgot password?
                 </span>
               </div>
@@ -85,7 +85,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
             </div>
 
             {error && (
-              <p className="text-xs text-rose-300 font-medium bg-rose-950/70 p-3 rounded-xl border border-rose-500/40">
+              <p className="text-xs text-danger font-medium bg-danger-soft p-2.5 rounded-[8px] border border-danger-border">
                 {error}
               </p>
             )}
@@ -94,7 +94,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
               type="submit"
               variant="primary"
               size="lg"
-              className="w-full gap-2 shadow-flame mt-2 font-bold"
+              className="w-full gap-2 mt-1"
               isLoading={isLoading}
             >
               <LogIn className="w-4 h-4" />
@@ -102,20 +102,20 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
             </Button>
           </form>
 
-          <div className="pt-4 text-center text-xs text-lilac-200/80 border-t border-lilac-200/10">
+          <div className="pt-3 text-center text-xs text-text-secondary border-t border-border">
             <span>Don&apos;t have an account? </span>
             <button
               type="button"
               onClick={() => onNavigate('signup')}
-              className="font-bold text-flame-400 hover:text-flame-300 underline ml-1"
+              className="font-medium text-primary hover:text-primary-hover underline ml-1"
             >
               Join the exchange
             </button>
           </div>
         </div>
 
-        <div className="flex items-center justify-center gap-2 text-xs text-lilac-200/60 font-semibold">
-          <ShieldCheck className="w-4 h-4 text-emerald-400" />
+        <div className="flex items-center justify-center gap-1.5 text-xs text-text-secondary">
+          <ShieldCheck className="w-4 h-4 text-success" />
           <span>Non-monetary peer platform</span>
         </div>
       </div>

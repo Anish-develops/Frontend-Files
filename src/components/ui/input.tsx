@@ -16,7 +16,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label
             htmlFor={generatedId}
-            className="block text-xs font-bold text-lilac-200 tracking-wider uppercase"
+            className="block text-xs font-medium text-text-primary"
           >
             {label}
           </label>
@@ -26,14 +26,14 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           id={generatedId}
           ref={ref}
           className={cn(
-            'flex h-11 w-full rounded-xl border border-lilac-300/20 bg-[#071322] px-3.5 py-2 text-sm text-white placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-flame-500/30 focus:border-flame-500 disabled:cursor-not-allowed disabled:opacity-50 transition-all shadow-inner',
-            error && 'border-rose-500 focus:border-rose-500 focus:ring-rose-500/30',
+            'flex h-10 w-full rounded-[9px] border border-border bg-surface px-3 py-2 text-sm text-text-primary placeholder:text-text-secondary/50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary disabled:cursor-not-allowed disabled:opacity-50 transition-colors shadow-subtle',
+            error && 'border-danger focus:border-danger focus:ring-danger/20',
             className
           )}
           {...props}
         />
-        {error && <p className="text-xs text-rose-400 font-medium">{error}</p>}
-        {helperText && !error && <p className="text-xs text-lilac-200/60">{helperText}</p>}
+        {error && <p className="text-xs text-danger font-medium">{error}</p>}
+        {helperText && !error && <p className="text-xs text-text-secondary">{helperText}</p>}
       </div>
     );
   }

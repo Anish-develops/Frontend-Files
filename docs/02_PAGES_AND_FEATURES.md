@@ -26,35 +26,34 @@ This document provides a comprehensive functional report of every page, modal di
 The public homepage communicates the core philosophy of SkillSwap—exchanging proven craft directly between peers with zero monetary fees—using high-contrast editorial typography and interactive preview tools.
 
 #### Key Functional Sections:
-- **Floating Top Capsule Navbar**:
-  - Translucent deep navy capsule (`bg-[#0c1e34]/90 backdrop-blur-xl border border-lilac-300/20`) anchored at the top of the viewport.
-  - Brand identity with vibrant flame gradient emblem.
-  - Centered navigation pills: `Overview`, `Explore Skills`, and `How It Works`.
-  - Direct authentication actions: `Log In` and `Get Started`.
-- **Asymmetric Hero Section (QuantraLogic Layout)**:
+- **Clean Soft White Navbar**:
+  - Soft White surface (`bg-surface/95 backdrop-blur-md border-b border-border shadow-subtle`) anchored at the top of the viewport.
+  - Brand identity with solid Terracotta emblem (`#C66A4A`).
+  - Centered navigation links: `Overview`, `Explore Skills`, and `How It Works`.
+  - Direct authentication actions: `Log In` and `Get Started` (Terracotta fill, 10px radius).
+- **Asymmetric Hero Section**:
   - **Left Column (7 cols)**:
-    - Glowing badge: `"100% NON-MONETARY PEER LEARNING"`.
-    - Massive defining headline:
+    - Subtle badge: `"100% NON-MONETARY PEER LEARNING"` in Soft Peach (`#EEDDD2`) and Terracotta (`#C66A4A`).
+    - Clear editorial headline:
       ```
-      MASTERY
-      SWAPPED,
-      NOT BOUGHT.
+      Mastery swapped,
+      not bought.
       ```
-      Set in crisp white text with `"SWAPPED,"` glowing in a flame-to-rose gradient.
+      Set in crisp Charcoal (`#292A27`) text with `"not bought."` highlighted in Terracotta (`#C66A4A`).
     - Value proposition: *"Trade what you know for what you don’t. Direct 1:1 reciprocal exchange sessions between verified engineers, designers, and domain specialists."*
-    - Primary CTA buttons: `Get Started Free` (vibrant flame gradient with arrow) and `Explore Directory` (accent navy pill).
+    - Primary CTA buttons: `Get Started Free` (Terracotta fill with arrow) and `Explore Directory` (Soft White with Warm Border).
     - Trust indicators: Zero monetary fee, strictly 1:1 sessions, verified peer ratings.
   - **Right Column (5 cols)**:
     - **Interactive Live Reciprocal Match Engine**: A functional micro-simulator widget. Visitors select what they teach (e.g. *React & Next.js Architecture*) and what they want to learn (e.g. *Figma Design Systems & Tokens*).
-    - Live computed badge: Displays an instant `Two-Way Match: 99% Fit` badge in soft lilac with partner recommendations.
-- **Curated Specialists Showcase (T. Edwards 3-Column Photo Grid)**:
-  - Three rich editorial cards featuring real photography:
+    - Live computed badge: Displays an instant `Two-Way Match: 99% Fit` badge in Pale Sage (`#E5EDE4`) with Muted Sage (`#71836D`) text.
+- **Curated Specialists Showcase**:
+  - Three rich editorial cards on Soft White surfaces with 1px Warm Borders:
     1. **Elena Rostova** — Principal Design Systems Lead (Seattle, WA) | Teaches: Figma Tokens & Layout | Learns: React Architecture | Rating: 5.0 (19 completed swaps).
     2. **Marcus Vance** — Staff Distributed Systems Architect (Austin, TX) | Teaches: Redis & Sharded DBs | Learns: TypeScript Generics | Rating: 4.9 (15 completed swaps).
     3. **Sofia Morales** — Native Spanish Coach & UX Strategist (New York, NY) | Teaches: Conversational Spanish | Learns: CSS & Tailwind Architecture | Rating: 5.0 (26 completed swaps).
   - One-click `"Request Swap"` action on each card.
 - **The Exchange Protocol (3-Step How It Works)**:
-  - Navy cards with oversized flame index numbers:
+  - Soft White cards with clean Terracotta index numbers:
     - `01`: **Publish Your Profile** — List mastered skills and target wishlist.
     - `02`: **Pair on Two-Way Fit** — Match based on mutual skill needs.
     - `03`: **Split the Hour & Review** — Meet 1:1 on video (e.g. 30m each) and leave verified community reviews.

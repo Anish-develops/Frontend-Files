@@ -9,16 +9,19 @@ Welcome to the **SkillSwap Technical Documentation**. This directory provides ar
 1. [**01. Project Overview & Architecture**](./01_PROJECT_OVERVIEW.md)
    - Executive summary of the 100% non-monetary peer exchange concept.
    - Core technology stack: React 18, TypeScript, Tailwind CSS, Vite, and Lucide icons.
-   - Production Design System:
-     - **Primary (Canvas)**: Deep dark orange-reddish gradient (`#4e1208` → `#290804` → `#0d0201`) with vibrant flame CTAs (`#ff6b4d` → `#ea3a18` → `#c5280b`).
-     - **Secondary**: Soft Lilac / Light Purple (`#e8daff`, `#d7beff`) for reciprocal match chips and category badges.
-     - **Accent**: Deep Seal Blue / Navy (`#0c1e34`, `#071322`) for cards, modal dialogs, and the floating navigation capsule.
-     - **Editorial Layout**: QuantraLogic asymmetric balance, massive statement headline (`MASTERY SWAPPED, NOT BOUGHT.`), and T. Edwards 3-column curated photo showcase.
+   - Production Design System (Warm Minimalist · Professional SaaS):
+     - **Main Background**: Warm Ivory (`#F7F4EE`) providing a calm, legible editorial canvas.
+     - **Card & Navigation Surfaces**: Soft White (`#FFFEFB`) with subtle 1px Warm Borders (`#E4DACE`) and restrained shadows (`0 4px 16px rgba(41, 42, 39, 0.05)`).
+     - **Secondary Surfaces**: Sand Beige (`#EFE9DF`) for internal card panels and subtle section grouping.
+     - **Primary Brand / Action CTA**: Terracotta (`#C66A4A`), hover Burnt Clay (`#A95338`), with a 10px button radius.
+     - **Reciprocal & Success Indicators**: Pale Sage (`#E5EDE4`) with Muted Sage (`#71836D`) text for positive two-way matches.
+     - **Ratings & Achievements**: Muted Gold (`#D6A75D`) for community star ratings.
+     - **Typography**: High-contrast Charcoal (`#292A27`) headings and Warm Grey (`#716D66`) body text.
    - Decoupled architecture and directory structure.
 
 2. [**02. Pages & Features Walkthrough**](./02_PAGES_AND_FEATURES.md)
    - Complete technical breakdown of all core screens:
-     - **Landing Page**: Bold asymmetric hero, live reciprocal fit simulator, 3-discipline photo showcase, 3-step exchange protocol, closing CTA banner.
+     - **Landing Page**: Spacious editorial hero, live reciprocal fit simulator, 3-discipline photo showcase, 3-step exchange protocol, closing CTA banner.
      - **Authentication**: Production `/login` and `/signup` flows with validation and onboarding skill capture.
      - **Dashboard**: Exchange statistics (hours swapped, rating, wishlist), action alerts, recommended reciprocal matches, and upcoming sessions.
      - **Find Matches Directory**: Keyword search, category pills, rating and availability filters, reciprocal compatibility scoring cards.
@@ -56,8 +59,7 @@ Welcome to the **SkillSwap Technical Documentation**. This directory provides ar
 ---
 
 ## Quick Reference
-- **Local Dev Server**: `http://localhost:3000`
+- **Local Dev Server**: `http://localhost:5173`
 - **Application Entry Point**: [`src/main.tsx`](file:///e:/skillSwap/src/main.tsx) & [`src/App.tsx`](file:///e:/skillSwap/src/App.tsx)
-- **Unified API Client**: [`src/services/api.ts`](file:///e:/skillSwap/src/services/api.ts)
-- **Domain TypeScript Models**: [`src/types/index.ts`](file:///e:/skillSwap/src/types/index.ts)
-- **Design Tokens**: [`tailwind.config.js`](file:///e:/skillSwap/tailwind.config.js) & [`src/index.css`](file:///e:/skillSwap/src/index.css)
+- **Deployment Platform**: Vercel (configured via [`vercel.json`](file:///e:/skillSwap/vercel.json))
+- **Production Tokens**: [`tailwind.config.js`](file:///e:/skillSwap/tailwind.config.js) & [`src/index.css`](file:///e:/skillSwap/src/index.css)

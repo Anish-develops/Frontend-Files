@@ -78,22 +78,22 @@ export const ReviewModal: React.FC<ReviewModalProps> = ({
       description={`Share your experience swapping skills with ${partnerName}.`}
       maxWidth="md"
     >
-      <form onSubmit={handleSubmit} className="space-y-4 text-white">
+      <form onSubmit={handleSubmit} className="space-y-4 text-text-primary">
         {/* Partner header */}
-        <div className="flex items-center gap-3.5 p-3.5 bg-[#071322] rounded-2xl border border-lilac-300/15">
+        <div className="flex items-center gap-3 p-3 bg-surface-muted rounded-[10px] border border-border">
           <Avatar src={partnerAvatar} name={partnerName} size="md" />
           <div>
-            <h4 className="font-bold text-white text-sm">{partnerName}</h4>
-            <p className="text-xs text-lilac-200/80 font-medium">{skillExchangedSummary}</p>
+            <h4 className="font-semibold text-text-primary text-sm">{partnerName}</h4>
+            <p className="text-xs text-text-secondary font-normal">{skillExchangedSummary}</p>
           </div>
         </div>
 
         {/* 1-5 Star selector */}
         <div className="text-center py-2">
-          <label className="block text-xs font-bold text-lilac-200 uppercase tracking-wider mb-2">
+          <label className="block text-xs font-medium text-text-primary mb-2">
             Overall Exchange Rating
           </label>
-          <div className="flex items-center justify-center gap-2">
+          <div className="flex items-center justify-center gap-1.5">
             {[1, 2, 3, 4, 5].map((star) => {
               const active = (hoverRating || rating) >= star;
               return (
@@ -103,20 +103,20 @@ export const ReviewModal: React.FC<ReviewModalProps> = ({
                   onMouseEnter={() => setHoverRating(star)}
                   onMouseLeave={() => setHoverRating(0)}
                   onClick={() => setRating(star)}
-                  className="p-1 rounded-xl focus:outline-none hover:scale-110 transition-transform"
+                  className="p-1 rounded-[6px] focus:outline-none transition-transform"
                 >
                   <Star
-                    className={`w-8 h-8 transition-colors ${
+                    className={`w-7 h-7 transition-colors ${
                       active
-                        ? 'fill-amber-400 text-amber-400 drop-shadow-sm'
-                        : 'text-zinc-600 stroke-zinc-600'
+                        ? 'fill-rating text-rating'
+                        : 'text-border stroke-border'
                     }`}
                   />
                 </button>
               );
             })}
           </div>
-          <p className="text-xs text-lilac-200/80 mt-1.5 font-semibold">
+          <p className="text-xs text-text-secondary mt-1.5 font-medium">
             {rating === 5 && 'Outstanding — Highly recommended partner'}
             {rating === 4 && 'Great — Smooth and productive session'}
             {rating === 3 && 'Good — Met expectations'}
@@ -139,8 +139,8 @@ export const ReviewModal: React.FC<ReviewModalProps> = ({
         </div>
 
         {/* Submit */}
-        <div className="flex items-center justify-end gap-3 pt-3 border-t border-lilac-200/10">
-          <Button type="button" variant="outline" size="md" onClick={onClose} className="font-bold">
+        <div className="flex items-center justify-end gap-2.5 pt-3 border-t border-border">
+          <Button type="button" variant="secondary" size="md" onClick={onClose}>
             Cancel
           </Button>
           <Button
@@ -148,7 +148,7 @@ export const ReviewModal: React.FC<ReviewModalProps> = ({
             variant="primary"
             size="md"
             isLoading={isSubmitting}
-            className="gap-2 shadow-flame font-bold"
+            className="gap-2"
           >
             <CheckCircle2 className="w-4 h-4" />
             <span>Submit Verified Review</span>
