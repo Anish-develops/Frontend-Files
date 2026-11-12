@@ -8,9 +8,11 @@ export const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-border">
           <div className="space-y-1.5 max-w-md">
             <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded-[6px] bg-primary text-white flex items-center justify-center">
-                <ArrowLeftRight className="w-3.5 h-3.5" />
-              </div>
+              <img
+                src="/logo.png"
+                alt="SkillSwap Logo"
+                className="w-10 h-10 rounded-[6px] object-contain shadow-subtle"
+              />
               <span className="font-semibold text-base tracking-tight text-text-primary">SkillSwap</span>
             </div>
             <p className="text-xs text-text-secondary leading-relaxed">

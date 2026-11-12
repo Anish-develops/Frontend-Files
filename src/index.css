@@ -4,25 +4,38 @@
 
 @layer base {
   :root {
-    /* Base surfaces */
+    /* Base surfaces (Warm Ivory Light Mode) */
     --background: #F7F4EE;
     --surface: #FFFEFB;
     --surface-muted: #EFE9DF;
+    --surface-elevated: #FFFEFB;
+    --surface-subtle: #EFE9DF;
     --border: #E4DACE;
+    --border-subtle: #EDE5DB;
 
     /* Typography */
     --text-primary: #292A27;
     --text-secondary: #716D66;
+    --text-muted: #91887E;
 
     /* Brand */
     --primary: #C66A4A;
     --primary-hover: #A95338;
+    --primary-deep: #8E452E;
     --primary-soft: #EEDDD2;
+    --primary-fg: #FFFFFF;
 
-    /* Supporting colors */
+    /* Supporting & Semantic */
     --success: #71836D;
     --success-soft: #E5EDE4;
     --rating: #D6A75D;
+
+    /* Alerts */
+    --warning: #C66A4A;
+    --warning-soft: #EEDDD2;
+    --danger: #A95338;
+    --danger-soft: #FDF2F0;
+    --danger-border: #F2C4BC;
 
     /* Shape and elevation */
     --radius-card: 14px;
@@ -31,23 +44,61 @@
     --shadow-card: 0 4px 16px rgba(41, 42, 39, 0.05);
   }
 
-  html {
-    color-scheme: light;
+  :root.dark,
+  html.dark,
+  body.dark,
+  .dark {
+    /* Base surfaces (Warm Charcoal Dark Mode - Deep Espresso Canvas) */
+    --background: #171513;
+    --surface: #211F1C;
+    --surface-muted: #2B2824;
+    --surface-elevated: #2B2824;
+    --surface-subtle: #332E29;
+    --border: #403A34;
+    --border-subtle: #302B25;
+
+    /* Typography */
+    --text-primary: #F2EEE8;
+    --text-secondary: #B8B0A6;
+    --text-muted: #91887E;
+
+    /* Brand */
+    --primary: #D98263;
+    --primary-hover: #E39475;
+    --primary-deep: #63382C;
+    --primary-soft: #3A2923;
+    --primary-fg: #211F1C;
+
+    /* Supporting & Semantic */
+    --success: #A3B89A;
+    --success-soft: #293329;
+    --rating: #D8B36A;
+
+    /* Alerts */
+    --warning: #D98263;
+    --warning-soft: #63382C;
+    --danger: #E06D53;
+    --danger-soft: #38201B;
+    --danger-border: #542E26;
+
+    /* Shape and elevation */
+    --shadow-card: 0 6px 20px rgba(0, 0, 0, 0.16);
   }
 
   body {
-    background-color: #F7F4EE;
-    color: #292A27;
+    background-color: var(--background);
+    color: var(--text-primary);
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 }
 
 /* Accessible focus ring using brand Terracotta */
 *:focus-visible {
-  outline: 2px solid #C66A4A;
+  outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
 
@@ -57,13 +108,13 @@
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #F7F4EE;
+  background: var(--background);
 }
 ::-webkit-scrollbar-thumb {
-  background: #E4DACE;
+  background: var(--border);
   border-radius: 9999px;
-  border: 2px solid #F7F4EE;
+  border: 2px solid var(--background);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #C66A4A;
+  background: var(--primary);
 }

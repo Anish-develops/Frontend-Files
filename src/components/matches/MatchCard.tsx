@@ -19,7 +19,7 @@ export const MatchCard: React.FC<MatchCardProps> = ({
   const { member, youTeach, theyTeach, compatibilityScore, compatibilityReason } = match;
 
   return (
-    <div className="rounded-[14px] border border-border bg-surface p-5 shadow-card hover:border-[#D6CBC0] transition-colors flex flex-col justify-between text-text-primary">
+    <div className="rounded-[14px] border border-border bg-surface p-5 shadow-card hover:border-primary/40 transition-colors flex flex-col justify-between text-text-primary">
       <div>
         {/* Top Header: Avatar, Name, Compatibility */}
         <div className="flex items-start justify-between gap-3">

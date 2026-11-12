@@ -16,13 +16,29 @@ export const App: React.FC = () => {
   const { user, isLoading } = useAuth();
   const [currentRoute, setCurrentRoute] = useState<string>('landing');
   const [selectedMemberId, setSelectedMemberId] = useState<string | null>(null);
+  const initialRedirectDone = React.useRef<boolean>(false);
 
-  // If user is logged in and route is landing, or login/signup, switch to dashboard
+  // 1. Initial entry check: if user is returning with an active session, directly redirect to dashboard
   React.useEffect(() => {
+    if (!isLoading && !initialRedirectDone.current) {
+      initialRedirectDone.current = true;
+      if (user) {
+        setCurrentRoute('dashboard');
+      }
+    }
+  }, [isLoading, user]);
+
+  // 2. Active route protection & login transitions
+  React.useEffect(() => {
+    // If user signs in / signs up from auth forms, navigate to dashboard
     if (user && (currentRoute === 'login' || currentRoute === 'signup')) {
       setCurrentRoute('dashboard');
     }
-  }, [user]);
+    // If unauthenticated and trying to view private member routes, redirect to landing
+    if (!user && !isLoading && ['dashboard', 'sessions', 'profile', 'notifications'].includes(currentRoute)) {
+      setCurrentRoute('landing');
+    }
+  }, [user, currentRoute, isLoading]);
 
   const handleNavigate = (route: string) => {
     setSelectedMemberId(null);
@@ -39,9 +55,11 @@ export const App: React.FC = () => {
   if (isLoading) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-background text-text-primary space-y-3">
-        <div className="w-10 h-10 rounded-[10px] bg-primary text-white flex items-center justify-center shadow-card animate-pulse">
-          <span className="font-bold text-sm tracking-tight">SS</span>
-        </div>
+        <img
+          src="/logo.png"
+          alt="SkillSwap Logo"
+          className="w-12 h-12 rounded-[12px] object-contain shadow-card animate-pulse"
+        />
         <p className="text-xs font-semibold tracking-wider text-text-secondary uppercase">
           Connecting to SkillSwap...
         </p>

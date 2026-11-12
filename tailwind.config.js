@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -8,77 +9,80 @@ export default {
     extend: {
       colors: {
         // Base surfaces
-        background: '#F7F4EE',      // Warm Ivory (Main page canvas)
+        background: 'var(--background)',
         surface: {
-          DEFAULT: '#FFFEFB',       // Soft White (Cards, modals, navigation)
-          muted: '#EFE9DF',         // Sand Beige (Secondary panels, sub-sections)
+          DEFAULT: 'var(--surface)',
+          muted: 'var(--surface-muted)',
+          elevated: 'var(--surface-elevated)',
+          subtle: 'var(--surface-subtle)',
         },
         border: {
-          DEFAULT: '#E4DACE',       // Warm Border (Dividers, outlines)
-          subtle: '#EDE5DB',
+          DEFAULT: 'var(--border)',
+          subtle: 'var(--border-subtle)',
         },
 
         // Typography
-        'text-primary': '#292A27',   // Charcoal (Main headings, prominent text)
-        'text-secondary': '#716D66', // Warm Grey (Body copy, descriptions, captions)
+        'text-primary': 'var(--text-primary)',
+        'text-secondary': 'var(--text-secondary)',
+        'text-muted': 'var(--text-muted)',
 
         // Brand colors
         primary: {
-          DEFAULT: '#C66A4A',       // Terracotta (Primary CTA, key active links)
-          hover: '#A95338',         // Burnt Clay (Hover, active states)
-          soft: '#EEDDD2',          // Soft Peach (Chips, highlights, tinted panels)
+          DEFAULT: 'var(--primary)',
+          hover: 'var(--primary-hover)',
+          soft: 'var(--primary-soft)',
+          deep: 'var(--primary-deep)',
+          fg: 'var(--primary-fg)',
         },
 
         // Supporting & Semantic
         success: {
-          DEFAULT: '#71836D',       // Muted Sage (Reciprocal indicator text, success)
-          soft: '#E5EDE4',          // Pale Sage (Success badges, reciprocal cards)
+          DEFAULT: 'var(--success)',
+          soft: 'var(--success-soft)',
         },
-        rating: '#D6A75D',           // Muted Gold (Ratings, stars)
+        rating: 'var(--rating)',
 
         // Semantic alerts
         warning: {
-          DEFAULT: '#C66A4A',
-          soft: '#EEDDD2',
+          DEFAULT: 'var(--warning)',
+          soft: 'var(--warning-soft)',
         },
         danger: {
-          DEFAULT: '#A95338',
-          soft: '#FDF2F0',
-          border: '#F2C4BC',
+          DEFAULT: 'var(--danger)',
+          soft: 'var(--danger-soft)',
+          border: 'var(--danger-border)',
         },
 
-        // Backward compatibility aliases mapping to the Warm Minimalist palette
+        // Backward compatibility aliases
         flame: {
-          50: '#FDF7F4',
-          100: '#EEDDD2',
-          200: '#E2C8B8',
-          300: '#D5A48F',
-          400: '#C66A4A',
-          500: '#C66A4A',
-          600: '#A95338',
-          700: '#8E452E',
-          800: '#733725',
-          900: '#5A2A1C',
-          950: '#3D1A10',
-          DEFAULT: '#C66A4A',
+          50: 'var(--primary-soft)',
+          100: 'var(--primary-soft)',
+          200: 'var(--primary-soft)',
+          300: 'var(--primary)',
+          400: 'var(--primary)',
+          500: 'var(--primary)',
+          600: 'var(--primary-hover)',
+          700: 'var(--primary-deep)',
+          800: 'var(--primary-deep)',
+          900: 'var(--primary-deep)',
+          DEFAULT: 'var(--primary)',
         },
         lilac: {
-          50: '#FAF8F5',
-          100: '#EFE9DF',
-          200: '#E4DACE',
-          300: '#D6CBC0',
-          400: '#716D66',
-          500: '#57544F',
-          DEFAULT: '#716D66',
+          50: 'var(--surface-muted)',
+          100: 'var(--surface-muted)',
+          200: 'var(--border)',
+          300: 'var(--border)',
+          400: 'var(--text-secondary)',
+          500: 'var(--text-muted)',
+          DEFAULT: 'var(--text-secondary)',
         },
         seal: {
-          50: '#F7F4EE',
-          100: '#EFE9DF',
-          200: '#E4DACE',
-          800: '#3A3B37',
-          900: '#292A27',
-          950: '#1E1F1C',
-          DEFAULT: '#292A27',
+          50: 'var(--background)',
+          100: 'var(--surface-muted)',
+          200: 'var(--border)',
+          800: 'var(--surface)',
+          900: 'var(--text-primary)',
+          DEFAULT: 'var(--text-primary)',
         },
       },
       fontFamily: {
@@ -90,9 +94,9 @@ export default {
         input: '9px',
       },
       boxShadow: {
-        card: '0 4px 16px rgba(41, 42, 39, 0.05)',
-        lifted: '0 8px 24px rgba(41, 42, 39, 0.08)',
-        subtle: '0 1px 3px rgba(41, 42, 39, 0.04)',
+        card: 'var(--shadow-card)',
+        lifted: '0 8px 24px rgba(0, 0, 0, 0.14)',
+        subtle: '0 1px 3px rgba(0, 0, 0, 0.05)',
       },
     },
   },

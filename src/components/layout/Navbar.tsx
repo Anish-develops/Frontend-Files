@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { Avatar } from '../ui/avatar';
+import { ThemeToggle } from '../ui/ThemeToggle';
 import { api } from '../../services/api';
 
 interface NavbarProps {
@@ -71,7 +72,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-surface/95 backdrop-blur-md border-b border-border shadow-subtle">
+    <header className="sticky top-0 z-40 w-full bg-surface border-b border-border shadow-subtle">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Left: Brand Logo */}
@@ -80,9 +81,11 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
               onClick={() => handleNavClick(user ? 'dashboard' : 'landing')}
               className="flex items-center gap-2.5 text-left group focus:outline-none"
             >
-              <div className="w-8 h-8 rounded-[9px] bg-primary text-white flex items-center justify-center transition-colors group-hover:bg-primary-hover shadow-subtle">
-                <ArrowLeftRight className="w-4 h-4" />
-              </div>
+              <img
+                src="/logo.png"
+                alt="SkillSwap Logo"
+                className="w-12 h-12 rounded-[8px] object-contain shadow-subtle group-hover:scale-105 transition-transform"
+              />
               <div className="flex items-baseline gap-1.5">
                 <span className="text-base font-bold tracking-tight text-text-primary">
                   SkillSwap
@@ -112,7 +115,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
                       <Icon className="w-4 h-4" />
                       <span>{item.label}</span>
                       {item.badge !== undefined && (
-                        <span className="ml-1 px-1.5 py-0.2 rounded-full text-[10px] font-semibold bg-primary text-white">
+                        <span className="ml-1 px-1.5 py-0.2 rounded-full text-[10px] font-semibold bg-primary text-primary-fg">
                           {item.badge}
                         </span>
                       )}
@@ -157,7 +160,9 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
           )}
 
           {/* Right: User Menu or Auth CTAs */}
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+
             {user ? (
               /* Profile Dropdown */
               <div className="relative">
@@ -222,7 +227,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
                 </button>
                 <button
                   onClick={() => handleNavClick('signup')}
-                  className="px-4 py-2 text-xs font-medium bg-primary text-white rounded-[10px] hover:bg-primary-hover shadow-subtle transition-colors active:scale-98"
+                  className="px-4 py-2 text-xs font-medium bg-primary text-primary-fg rounded-[10px] hover:bg-primary-hover shadow-subtle transition-colors active:scale-98"
                 >
                   Get Started
                 </button>
@@ -242,7 +247,11 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
 
         {/* Mobile menu drawer */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-t border-border p-4 space-y-2 bg-surface rounded-b-[14px] shadow-lifted">
+          <div className="md:hidden border-t border-border p-4 space-y-3 bg-surface rounded-b-[14px] shadow-lifted">
+            <div className="flex items-center justify-between pb-2 border-b border-border">
+              <span className="text-xs font-medium text-text-secondary">Theme</span>
+              <ThemeToggle showLabel />
+            </div>
             {user ? (
               <>
                 {navItems.map((item) => {
@@ -262,7 +271,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
                         <span>{item.label}</span>
                       </div>
                       {item.badge !== undefined && (
-                        <span className="px-1.5 py-0.5 rounded-full text-[10px] font-semibold bg-primary text-white">
+                        <span className="px-1.5 py-0.5 rounded-full text-[10px] font-semibold bg-primary text-primary-fg">
                           {item.badge}
                         </span>
                       )}
@@ -305,7 +314,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
                 </button>
                 <button
                   onClick={() => handleNavClick('signup')}
-                  className="w-full py-2 text-center text-xs font-medium bg-primary text-white rounded-[10px] shadow-subtle hover:bg-primary-hover"
+                  className="w-full py-2 text-center text-xs font-medium bg-primary text-primary-fg rounded-[10px] shadow-subtle hover:bg-primary-hover"
                 >
                   Get Started
                 </button>

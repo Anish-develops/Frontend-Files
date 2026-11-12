@@ -73,8 +73,12 @@ export const SignupPage: React.FC<SignupPageProps> = ({ onNavigate }) => {
       <div className="w-full max-w-lg space-y-5">
         {/* Brand header */}
         <div className="text-center space-y-1.5">
-          <div className="inline-flex items-center justify-center w-10 h-10 rounded-[10px] bg-primary text-white shadow-subtle mb-1">
-            <ArrowLeftRight className="w-5 h-5" />
+          <div className="inline-flex items-center justify-center mb-1">
+            <img
+              src="/logo.png"
+              alt="SkillSwap Logo"
+              className="w-12 h-12 rounded-[10px] object-contain shadow-subtle"
+            />
           </div>
           <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-text-primary">
             Create your exchange profile

@@ -13,14 +13,14 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       'inline-flex items-center justify-center font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none rounded-[10px]';
 
     const variants = {
-      primary: 'bg-primary text-white hover:bg-primary-hover shadow-subtle active:scale-[0.99]',
+      primary: 'bg-primary text-primary-fg hover:bg-primary-hover shadow-subtle active:scale-[0.99]',
       secondary: 'bg-surface text-text-primary hover:bg-surface-muted border border-border shadow-subtle active:scale-[0.99]',
-      accent: 'bg-text-primary text-surface hover:bg-[#3A3B37] shadow-subtle active:scale-[0.99]',
+      accent: 'bg-text-primary text-surface hover:opacity-90 shadow-subtle active:scale-[0.99]',
       outline: 'border border-border bg-surface text-text-primary hover:bg-surface-muted',
       ghost: 'text-text-secondary hover:text-text-primary hover:bg-surface-muted',
-      destructive: 'bg-danger text-white hover:bg-[#8E452E]',
+      destructive: 'bg-danger text-white hover:opacity-90',
       pill: 'rounded-full border border-border bg-surface text-text-primary hover:bg-surface-muted',
-      subtle: 'bg-primary-soft text-primary-hover hover:bg-[#E2C8B8] border border-border',
+      subtle: 'bg-primary-soft text-primary hover:opacity-85 border border-border',
     };
 
     const sizes = {

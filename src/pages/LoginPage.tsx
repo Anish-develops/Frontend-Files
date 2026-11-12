@@ -38,13 +38,31 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
     }
   };
 
+  const handleDemoLogin = async () => {
+    setError('');
+    setIsLoading(true);
+    try {
+      await login('alex.chen@example.com', 'demo');
+      toast('Welcome back! Signed in with Demo Account', 'success');
+      onNavigate('dashboard');
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Demo sign in failed');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-[75vh] flex items-center justify-center px-4 py-10 text-text-primary">
       <div className="w-full max-w-md space-y-5">
         {/* Brand header */}
         <div className="text-center space-y-1.5">
-          <div className="inline-flex items-center justify-center w-10 h-10 rounded-[10px] bg-primary text-white shadow-subtle mb-1">
-            <ArrowLeftRight className="w-5 h-5" />
+          <div className="inline-flex items-center justify-center mb-1">
+            <img
+              src="/logo.png"
+              alt="SkillSwap Logo"
+              className="w-12 h-12 rounded-[10px] object-contain shadow-subtle"
+            />
           </div>
           <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-text-primary">
             Sign in to SkillSwap
@@ -99,6 +117,17 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
             >
               <LogIn className="w-4 h-4" />
               <span>Sign In to Account</span>
+            </Button>
+
+            <Button
+              type="button"
+              variant="secondary"
+              size="md"
+              className="w-full gap-2 text-xs"
+              onClick={handleDemoLogin}
+              disabled={isLoading}
+            >
+              <span>Explore as Demo User (Alex Chen)</span>
             </Button>
           </form>
 

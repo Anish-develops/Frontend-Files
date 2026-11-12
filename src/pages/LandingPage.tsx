@@ -206,7 +206,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Card 1: Design Systems */}
-          <div className="group rounded-[14px] border border-border bg-surface overflow-hidden shadow-card hover:border-[#D6CBC0] transition-colors flex flex-col justify-between">
+          <div className="group rounded-[14px] border border-border bg-surface overflow-hidden shadow-card hover:border-primary/40 transition-colors flex flex-col justify-between">
             <div className="h-48 overflow-hidden relative bg-surface-muted">
               <img
                 src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=400&fit=crop&crop=faces&auto=format&q=80"
@@ -214,7 +214,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
                 className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
               />
               <div className="absolute top-3 left-3">
-                <span className="px-2.5 py-1 rounded-[6px] text-xs font-medium bg-surface/90 text-text-primary border border-border backdrop-blur-xs">
+                <span className="px-2.5 py-1 rounded-[6px] text-xs font-medium bg-surface text-text-primary border border-border">
                   Design Systems
                 </span>
               </div>
@@ -259,7 +259,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
           </div>
 
           {/* Card 2: Distributed Systems */}
-          <div className="group rounded-[14px] border border-border bg-surface overflow-hidden shadow-card hover:border-[#D6CBC0] transition-colors flex flex-col justify-between">
+          <div className="group rounded-[14px] border border-border bg-surface overflow-hidden shadow-card hover:border-primary/40 transition-colors flex flex-col justify-between">
             <div className="h-48 overflow-hidden relative bg-surface-muted">
               <img
                 src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop&crop=faces&auto=format&q=80"
@@ -267,7 +267,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
                 className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
               />
               <div className="absolute top-3 left-3">
-                <span className="px-2.5 py-1 rounded-[6px] text-xs font-medium bg-surface/90 text-text-primary border border-border backdrop-blur-xs">
+                <span className="px-2.5 py-1 rounded-[6px] text-xs font-medium bg-surface text-text-primary border border-border">
                   Engineering & Data
                 </span>
               </div>
@@ -312,7 +312,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
           </div>
 
           {/* Card 3: Languages & Writing */}
-          <div className="group rounded-[14px] border border-border bg-surface overflow-hidden shadow-card hover:border-[#D6CBC0] transition-colors flex flex-col justify-between">
+          <div className="group rounded-[14px] border border-border bg-surface overflow-hidden shadow-card hover:border-primary/40 transition-colors flex flex-col justify-between">
             <div className="h-48 overflow-hidden relative bg-surface-muted">
               <img
                 src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&h=400&fit=crop&crop=faces&auto=format&q=80"
@@ -320,7 +320,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
                 className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
               />
               <div className="absolute top-3 left-3">
-                <span className="px-2.5 py-1 rounded-[6px] text-xs font-medium bg-surface/90 text-text-primary border border-border backdrop-blur-xs">
+                <span className="px-2.5 py-1 rounded-[6px] text-xs font-medium bg-surface text-text-primary border border-border">
                   Languages & Strategy
                 </span>
               </div>

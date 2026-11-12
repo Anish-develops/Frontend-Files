@@ -66,7 +66,7 @@ export const SessionCard: React.FC<SessionCardProps> = ({
   };
 
   return (
-    <div className="rounded-[14px] border border-border bg-surface p-5 shadow-card hover:border-[#D6CBC0] transition-colors flex flex-col justify-between text-text-primary">
+    <div className="rounded-[14px] border border-border bg-surface p-5 shadow-card hover:border-primary/40 transition-colors flex flex-col justify-between text-text-primary">
       <div className="space-y-3.5">
         {/* Header: Partner + Status */}
         <div className="flex items-start justify-between gap-3">
@@ -202,7 +202,7 @@ export const SessionCard: React.FC<SessionCardProps> = ({
                   href={session.locationOrLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-[8px] bg-primary text-white text-xs font-medium hover:bg-primary-hover shadow-subtle transition-colors"
+                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-[8px] bg-primary text-primary-fg text-xs font-medium hover:bg-primary-hover shadow-subtle transition-colors"
                 >
                   <Video className="w-3.5 h-3.5" />
                   <span>Join Call</span>
