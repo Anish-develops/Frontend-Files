@@ -105,22 +105,16 @@ export function calculateReciprocalMatches(
 
 // Simulated backend API implementation with local persistence
 export class DummyBackend {
-  // Initialize storage if empty
+  // Initialize storage if empty or upgrading to version 2 sample data
   static init(): void {
-    if (!localStorage.getItem(STORAGE_KEYS.CURRENT_USER)) {
+    const isV2 = localStorage.getItem('skillswap_v2_seed');
+    if (!localStorage.getItem(STORAGE_KEYS.CURRENT_USER) || !isV2) {
       setStored(STORAGE_KEYS.CURRENT_USER, INITIAL_CURRENT_USER);
-    }
-    if (!localStorage.getItem(STORAGE_KEYS.MEMBERS)) {
       setStored(STORAGE_KEYS.MEMBERS, INITIAL_MEMBERS);
-    }
-    if (!localStorage.getItem(STORAGE_KEYS.SESSIONS)) {
       setStored(STORAGE_KEYS.SESSIONS, INITIAL_SESSIONS);
-    }
-    if (!localStorage.getItem(STORAGE_KEYS.REVIEWS)) {
       setStored(STORAGE_KEYS.REVIEWS, INITIAL_REVIEWS);
-    }
-    if (!localStorage.getItem(STORAGE_KEYS.NOTIFICATIONS)) {
       setStored(STORAGE_KEYS.NOTIFICATIONS, INITIAL_NOTIFICATIONS);
+      localStorage.setItem('skillswap_v2_seed', 'true');
     }
   }
 

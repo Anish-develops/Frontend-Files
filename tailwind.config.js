@@ -26,13 +26,31 @@ export default {
         'text-secondary': 'var(--text-secondary)',
         'text-muted': 'var(--text-muted)',
 
-        // Brand colors
+        // Primary brand — Blush Pink
         primary: {
           DEFAULT: 'var(--primary)',
           hover: 'var(--primary-hover)',
           soft: 'var(--primary-soft)',
           deep: 'var(--primary-deep)',
           fg: 'var(--primary-fg)',
+        },
+
+        // Highlighting & CTAs — Electric Lime
+        accent: {
+          DEFAULT: 'var(--accent)',
+          hover: 'var(--accent-hover)',
+          soft: 'var(--accent-soft)',
+          fg: 'var(--accent-fg)',
+        },
+
+        // Secondary accents — Warm Peach & Soft Lavender
+        peach: {
+          DEFAULT: 'var(--peach)',
+          soft: 'var(--peach-soft)',
+        },
+        lavender: {
+          DEFAULT: 'var(--lavender)',
+          soft: 'var(--lavender-soft)',
         },
 
         // Supporting & Semantic
@@ -53,50 +71,31 @@ export default {
           border: 'var(--danger-border)',
         },
 
-        // Backward compatibility aliases
+        // Aliases for compatibility
         flame: {
-          50: 'var(--primary-soft)',
-          100: 'var(--primary-soft)',
-          200: 'var(--primary-soft)',
-          300: 'var(--primary)',
-          400: 'var(--primary)',
-          500: 'var(--primary)',
-          600: 'var(--primary-hover)',
-          700: 'var(--primary-deep)',
-          800: 'var(--primary-deep)',
-          900: 'var(--primary-deep)',
-          DEFAULT: 'var(--primary)',
-        },
-        lilac: {
-          50: 'var(--surface-muted)',
-          100: 'var(--surface-muted)',
-          200: 'var(--border)',
-          300: 'var(--border)',
-          400: 'var(--text-secondary)',
-          500: 'var(--text-muted)',
-          DEFAULT: 'var(--text-secondary)',
-        },
-        seal: {
-          50: 'var(--background)',
-          100: 'var(--surface-muted)',
-          200: 'var(--border)',
-          800: 'var(--surface)',
-          900: 'var(--text-primary)',
-          DEFAULT: 'var(--text-primary)',
+          DEFAULT: 'var(--accent)',
+          hover: 'var(--accent-hover)',
+          soft: 'var(--accent-soft)',
         },
       },
       fontFamily: {
-        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        sans: ['DM Sans', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        heading: ['Space Grotesk', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+      },
+      scale: {
+        98: '0.98',
+        102: '1.02',
       },
       borderRadius: {
-        card: '14px',
-        button: '10px',
-        input: '9px',
+        card: '16px',
+        button: '12px',
+        input: '10px',
       },
       boxShadow: {
         card: 'var(--shadow-card)',
-        lifted: '0 8px 24px rgba(0, 0, 0, 0.14)',
-        subtle: '0 1px 3px rgba(0, 0, 0, 0.05)',
+        pop: 'var(--shadow-pop)',
+        lifted: '0 8px 30px rgba(36, 33, 38, 0.09)',
+        subtle: '0 1px 3px rgba(36, 33, 38, 0.05)',
       },
     },
   },

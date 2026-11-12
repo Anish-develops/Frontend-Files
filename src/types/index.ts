@@ -1,11 +1,20 @@
 export type SkillCategory =
   | 'Engineering & Code'
+  | 'Programming'
   | 'Design & UX'
+  | 'UI/UX Design'
+  | 'Graphic Design'
   | 'Product & Strategy'
   | 'Languages & Writing'
+  | 'Content Writing'
   | 'Data & Analytics'
   | 'Marketing & Media'
-  | 'Music & Arts';
+  | 'Digital Marketing'
+  | 'Video Editing'
+  | 'Music & Arts'
+  | 'Music'
+  | 'Photography'
+  | 'Fitness & Wellness';
 
 export type ProficiencyLevel = 'Beginner' | 'Intermediate' | 'Advanced' | 'Expert';
 export type PriorityLevel = 'High' | 'Medium' | 'Low';

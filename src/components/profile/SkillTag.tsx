@@ -15,18 +15,18 @@ export const SkillTag: React.FC<SkillTagProps> = ({ skill, type, onDelete }) => 
 
   return (
     <div
-      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[6px] border text-xs font-medium transition-colors ${
+      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[8px] border text-xs font-medium transition-colors ${
         isTeach
-          ? 'bg-primary-soft border-border text-primary-hover'
-          : 'bg-surface-muted border-border text-text-primary'
+          ? 'bg-accent/20 border-accent/40 text-text-primary'
+          : 'bg-primary-soft border-primary/30 text-text-primary'
       }`}
     >
-      <span>{skill.name}</span>
+      <span className="font-semibold">{skill.name}</span>
 
       <span
-        className={`px-1.5 py-0.2 rounded-[4px] text-[10px] uppercase font-semibold tracking-wide ${
+        className={`px-1.5 py-0.5 rounded-[5px] text-[10px] uppercase font-bold tracking-wider ${
           isTeach
-            ? 'bg-surface text-primary border border-border'
+            ? 'bg-accent text-accent-fg'
             : 'bg-surface text-text-secondary border border-border'
         }`}
       >

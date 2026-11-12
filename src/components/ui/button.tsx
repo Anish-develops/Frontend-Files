@@ -2,7 +2,7 @@ import React from 'react';
 import { cn } from '../../lib/utils';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'accent' | 'outline' | 'ghost' | 'destructive' | 'pill' | 'subtle';
+  variant?: 'primary' | 'secondary' | 'accent' | 'outline' | 'ghost' | 'destructive' | 'pill' | 'subtle' | 'lime';
   size?: 'sm' | 'md' | 'lg' | 'icon';
   isLoading?: boolean;
 }
@@ -10,17 +10,18 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = 'primary', size = 'md', isLoading, disabled, children, ...props }, ref) => {
     const baseStyles =
-      'inline-flex items-center justify-center font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none rounded-[10px]';
+      'inline-flex items-center justify-center font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none rounded-[12px]';
 
     const variants = {
-      primary: 'bg-primary text-primary-fg hover:bg-primary-hover shadow-subtle active:scale-[0.99]',
-      secondary: 'bg-surface text-text-primary hover:bg-surface-muted border border-border shadow-subtle active:scale-[0.99]',
-      accent: 'bg-text-primary text-surface hover:opacity-90 shadow-subtle active:scale-[0.99]',
-      outline: 'border border-border bg-surface text-text-primary hover:bg-surface-muted',
+      primary: 'bg-primary text-primary-fg hover:bg-primary-hover shadow-subtle active:scale-[0.98] font-semibold',
+      accent: 'bg-accent text-accent-fg hover:bg-accent-hover shadow-subtle active:scale-[0.98] font-semibold',
+      lime: 'bg-accent text-accent-fg hover:bg-accent-hover shadow-subtle active:scale-[0.98] font-semibold',
+      secondary: 'bg-surface text-text-primary hover:bg-surface-muted border border-border shadow-subtle active:scale-[0.98]',
+      outline: 'border border-border bg-surface text-text-primary hover:bg-surface-muted active:scale-[0.98]',
       ghost: 'text-text-secondary hover:text-text-primary hover:bg-surface-muted',
       destructive: 'bg-danger text-white hover:opacity-90',
       pill: 'rounded-full border border-border bg-surface text-text-primary hover:bg-surface-muted',
-      subtle: 'bg-primary-soft text-primary hover:opacity-85 border border-border',
+      subtle: 'bg-primary-soft text-text-primary hover:opacity-85 border border-primary/20',
     };
 
     const sizes = {

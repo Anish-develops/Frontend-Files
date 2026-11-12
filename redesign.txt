@@ -1,0 +1,554 @@
+# SKILLSWAP — COMPLETE WEBSITE REDESIGN & FUNCTIONALITY IMPROVEMENT PROMPT
+
+Act as a senior UI/UX designer, creative director and full-stack developer. I already have an existing project called *SkillSwap*. Your task is to inspect, improve, redesign and complete the existing project — NOT create an unrelated new project.
+
+First, understand the current codebase, existing components, routes, authentication system and dashboard. Preserve working functionality and repair incomplete or inaccessible features.
+
+The final website should look like a professionally designed startup product, with a distinctive visual identity, smooth interactions, realistic demo content and a polished user experience.
+
+---
+
+## 1. PROJECT CONCEPT
+
+SkillSwap is a peer-to-peer skill exchange platform where users teach skills they know and learn skills they want in return, without exchanging money.
+
+Example:
+- One user teaches Figma and wants to learn JavaScript.
+- Another user teaches JavaScript and wants to learn Figma.
+- The platform recommends them as potential skill-exchange partners.
+
+The main workflow is:
+
+Register → Create Profile → Add Skills → Discover Matches → Connect → Schedule Sessions → Exchange Skills → Give Reviews.
+
+Keep the platform focused on this concept.
+
+## 2. NEW BRAND IDENTITY & COLOUR PALETTE
+
+Completely replace the previous green-orange colour scheme with this new palette.
+
+Use these colours consistently throughout the entire website.
+
+- Blush Pink: #F2B8C8 — primary brand colour
+- Electric Lime: #D7F36A — bold highlights and important CTAs
+- Warm Peach: #F4A78C — secondary accents
+- Soft Lavender: #D8C9EF — supporting backgrounds
+- Paper Cream: #F7F4EC — primary page background
+- Pure White: #FFFFFF — cards and clean surfaces
+- Ink Black: #242126 — headings and primary text
+- Muted Grey: #77727A — secondary text
+
+### Colour application
+- Use Paper Cream as the main background.
+- Use Blush Pink as the recognisable brand colour.
+- Use Ink Black for headings and important text.
+- Use Electric Lime selectively for buttons, highlights and interactive elements.
+- Use Lavender and Peach for visual variety.
+- Use white for cards and content surfaces.
+
+Do not use every colour everywhere. Maintain visual balance, readability and contrast.
+
+Create a consistent design system with reusable colour tokens, typography, spacing, shadows, borders and button styles.
+
+## 3. LOGO & BRANDING
+
+Create a unique, original SkillSwap logo.
+
+The logo should communicate:
+- Two-way learning.
+- Skill exchange.
+- Collaboration.
+- Community.
+- Growth.
+
+Explore an abstract letter S, two interlocking shapes or two connected arrows to represent exchanging skills.
+
+Requirements:
+- Create a custom SVG logo.
+- Provide icon-only and horizontal logo versions.
+- Make it work on light and dark backgrounds.
+- Create a favicon.
+- Use the logo consistently across the navbar, dashboard, login page and footer.
+
+Do not use generic stock icons as the main logo.
+
+## 4. VISUAL DESIGN DIRECTION
+
+The website should feel like a modern creative startup with a youthful, Gen-Z-inspired visual identity.
+
+Take inspiration from professionally art-directed startup websites, editorial layouts and modern community platforms.
+
+Typography:
+- Headings: Manrope or Space Grotesk.
+- Body: DM Sans or Inter.
+
+Design requirements:
+- Strong visual hierarchy.
+- Beautiful typography.
+- Generous whitespace.
+- Creative layouts.
+- Rounded but not excessively rounded components.
+- Subtle shadows and borders.
+- Smooth animations.
+- Attractive illustrations and profile imagery.
+- Consistent spacing.
+- Responsive design.
+
+Avoid:
+- Generic AI-generated website appearance.
+- Repetitive card layouts.
+- Excessive gradients.
+- Excessive glassmorphism.
+- Random colour combinations.
+- Oversized empty sections.
+- Unnecessary decorative elements.
+- Generic dashboard templates.
+- Tables and graph-heavy analytics.
+- Unnecessary charts and data visualisations.
+
+Make it look like a real product designed by an experienced human UI/UX designer.
+
+## 5. TWO COMPLETELY DIFFERENT EXPERIENCES
+
+This is extremely important.
+
+The public landing page and the authenticated dashboard must be separate experiences.
+
+### A. PUBLIC LANDING PAGE — /
+
+Before login, users must see a beautiful marketing website, NOT the dashboard.
+
+Include:
+
+*Navbar*
+- SkillSwap logo.
+- Home.
+- How It Works.
+- Explore Skills.
+- About.
+- Login.
+- Sign Up.
+- Explore Demo button.
+
+*Hero Section*
+
+Main headline:
+
+"Your Skills Are Someone Else's Superpower."
+
+Supporting text:
+
+"Share what you know. Learn what you love. Connect with people who make growth a two-way street."
+
+Add two CTA buttons:
+- Start Swapping
+- Explore Demo
+
+Use an attractive visual showing people exchanging skills, connected profiles or a creative illustration.
+
+*How It Works Section*
+
+Show three simple steps:
+1. Share Your Skills.
+2. Find Your Match.
+3. Learn & Teach Together.
+
+*Explore Skills Section*
+
+Show attractive skill categories:
+- UI/UX Design
+- Graphic Design
+- Programming
+- Photography
+- Video Editing
+- Digital Marketing
+- Music
+- Content Writing
+
+*Featured Community Section*
+
+Show sample user profiles with their skills and interests.
+
+*Why SkillSwap Section*
+
+Explain:
+- No money required.
+- Learn from real people.
+- Teach what you love.
+- Build meaningful connections.
+- Grow your skills together.
+
+*Testimonials Section*
+
+Add realistic demo testimonials from sample users. Clearly treat these as sample content.
+
+*Final CTA Section*
+
+"Ready to exchange skills and unlock new possibilities?"
+
+Add a Get Started button.
+
+*Footer*
+
+Include logo, navigation links, social links and a short brand description.
+
+The landing page should be visually impressive and feel like a real startup website.
+
+### B. AUTHENTICATED DASHBOARD — /dashboard
+
+After successful login, redirect the user to the actual product dashboard.
+
+The dashboard must be separate from the marketing website.
+
+Use a professional application layout with a sidebar and top navigation.
+
+Sidebar:
+- Overview
+- Discover People
+- My Skills
+- My Matches
+- Sessions
+- Messages
+- Notifications
+- My Profile
+- Settings
+- Logout
+
+Dashboard overview should include:
+
+*Welcome Section*
+
+"Welcome back, Alex!"
+
+Show a short personalised message.
+
+*My Skills*
+- Skills I Can Teach.
+- Skills I Want to Learn.
+- Add Skill button.
+
+*Recommended Matches*
+
+Show people with complementary skills.
+
+Each profile should show:
+- Profile photo.
+- Name.
+- Short bio.
+- Skills they teach.
+- Skills they want to learn.
+- Compatibility percentage.
+- Rating.
+- Connect button.
+- View Profile button.
+
+*Upcoming Sessions*
+
+Display upcoming learning sessions with dates, time and participant information.
+
+*Pending Requests*
+
+Show incoming and outgoing skill exchange requests with Accept, Reject and Cancel actions.
+
+*Recent Activity*
+
+Show recent connections, completed sessions, reviews and notifications.
+
+*Learning Progress*
+
+Use simple progress indicators, streaks or achievement badges.
+
+Do not use charts, graphs or large analytics tables.
+
+## 6. REALISTIC SAMPLE DATA
+
+Populate the website with at least 10 realistic sample users so visitors can explore the platform without creating accounts.
+
+Use these example profiles:
+
+1. Alex Morgan
+   - Teaches: UI Design, Figma.
+   - Wants to Learn: React, JavaScript.
+
+2. Sarah Williams
+   - Teaches: Photoshop, Branding.
+   - Wants to Learn: Photography.
+
+3. Ryan Cooper
+   - Teaches: Python, JavaScript.
+   - Wants to Learn: UI/UX Design.
+
+4. Emma Wilson
+   - Teaches: Video Editing, Premiere Pro.
+   - Wants to Learn: Digital Marketing.
+
+5. Noah Davis
+   - Teaches: Photography, Lightroom.
+   - Wants to Learn: Graphic Design.
+
+6. Olivia Brown
+   - Teaches: Content Writing, SEO.
+   - Wants to Learn: Web Development.
+
+7. Ethan Miller
+   - Teaches: Excel, Data Analysis.
+   - Wants to Learn: Graphic Design.
+
+8. Mia Anderson
+   - Teaches: Social Media Marketing.
+   - Wants to Learn: Video Editing.
+
+9. Lucas Martin
+   - Teaches: Guitar, Music Theory.
+   - Wants to Learn: Photography.
+
+10. Sophia Taylor
+    - Teaches: HTML, CSS.
+    - Wants to Learn: Figma, UI Design.
+
+Create realistic sample:
+- Profile photos.
+- Bios.
+- Skill tags.
+- Skill proficiency levels.
+- Availability.
+- Ratings.
+- Reviews.
+- Match suggestions.
+- Connection requests.
+- Session schedules.
+- Notifications.
+
+Make sure the sample data is interconnected and supports meaningful match recommendations.
+
+## 7. DEMO LOGIN — MUST WORK
+
+I want visitors to explore the actual website without creating an account.
+
+Create a functional demo login.
+
+Demo credentials:
+
+Email: demo@skillswap.demo
+
+Password: SkillSwap123
+
+Requirements:
+- Add an "Explore Demo" button on the landing page.
+- Add an "Explore Demo Account" option on the login page.
+- Clicking Explore Demo should automatically log in using the demo account.
+- Redirect directly to /dashboard.
+- No OTP or email verification should be required for demo login.
+- Display a small "Demo Mode" indicator inside the dashboard.
+- Allow visitors to explore all major sections.
+- Make demo interactions functional.
+
+If a backend authentication system already exists, integrate with it appropriately. If it does not exist or is incomplete, implement a safe frontend demo authentication flow using localStorage.
+
+Clearly identify simulated demo authentication as demo functionality.
+
+## 8. FIX THE EXISTING DASHBOARD ACCESS ISSUE
+
+The dashboard already exists in my project, but I am currently unable to access it.
+
+Do not ignore this issue.
+
+Inspect the existing code and identify the actual cause.
+
+Check:
+- Route configuration.
+- Login flow.
+- Authentication state.
+- Protected routes.
+- Redirect conditions.
+- Component imports.
+- Navigation links.
+- Missing dependencies.
+- Runtime errors.
+- Console errors.
+- Backend connection issues, if applicable.
+
+Fix the problem so that:
+
+1. Landing page opens at /.
+2. Login page opens at /login.
+3. Successful login opens /dashboard.
+4. Explore Demo opens /dashboard.
+5. Refreshing the dashboard does not unexpectedly log the user out.
+6. Sidebar navigation works.
+7. Logout returns the user to the public landing page.
+
+Reuse the existing dashboard code wherever possible. Do not delete working components and recreate everything unnecessarily.
+
+## 9. FUNCTIONAL INTERACTIONS
+
+The website must not be just a static design.
+
+Implement working interactions for:
+
+- Login and logout.
+- Demo login.
+- Signup form.
+- Search users.
+- Filter users by skills.
+- View user profiles.
+- Send connection requests.
+- Accept and reject requests.
+- Add and remove skills.
+- Edit profile information.
+- View recommended matches.
+- Schedule sessions.
+- Reschedule and cancel sessions.
+- View notifications.
+- Mark notifications as read.
+- Give ratings and reviews.
+- Update settings.
+
+Use localStorage for demo data persistence if the backend is unavailable.
+
+Add toast messages for successful actions, error messages for invalid actions, and confirmation dialogs for important actions.
+
+Do not display buttons that do nothing.
+
+## 10. DISCOVER PEOPLE PAGE
+
+Create a visually appealing discovery page.
+
+Include:
+- Search bar.
+- Skill category filters.
+- Teach and Learn filters.
+- Availability filters.
+- User profile cards.
+- Compatibility scores.
+- Connect buttons.
+
+Make discovery easy and enjoyable.
+
+## 11. MY PROFILE & MY SKILLS
+
+Allow users to:
+- Upload or change a profile picture.
+- Edit their name and bio.
+- Add skills they can teach.
+- Add skills they want to learn.
+- Select proficiency levels.
+- Set availability.
+- Update interests.
+
+Use attractive skill tags and clear forms.
+
+## 12. SESSIONS & CONNECTIONS
+
+Create a complete demo experience for managing skill exchange sessions.
+
+Include:
+- Pending requests.
+- Accepted connections.
+- Upcoming sessions.
+- Completed sessions.
+- Cancelled sessions.
+- Session date and time.
+- Session status.
+
+Allow users to accept, reject, reschedule and cancel requests.
+
+Add mutual ratings and reviews after a completed session.
+
+## 13. ANIMATIONS & MICRO-INTERACTIONS
+
+Use Framer Motion if already available or install it if appropriate.
+
+Add:
+- Smooth page transitions.
+- Scroll reveal animations.
+- Subtle hover effects.
+- Button interactions.
+- Animated skill tags.
+- Smooth modal transitions.
+- Toast notifications.
+- Skeleton loading states.
+- Sidebar transitions.
+- Small interactive details.
+
+Keep animations smooth and professional. Do not over-animate.
+
+## 14. RESPONSIVE DESIGN
+
+The entire platform must work properly on:
+- Desktop.
+- Laptop.
+- Tablet.
+- Mobile.
+
+Create a responsive sidebar or mobile navigation.
+
+Make sure cards, buttons, typography, forms and sections adapt correctly to smaller screens.
+
+## 15. TECHNICAL REQUIREMENTS
+
+First inspect the existing technology stack.
+
+Prefer keeping the existing:
+- React frontend.
+- Existing CSS or Tailwind setup.
+- Node.js and Express backend, if configured.
+- MongoDB or MySQL database, if configured.
+- Existing authentication system, if functional.
+
+Do not unnecessarily change the project architecture.
+
+If the backend is incomplete, create a frontend demo experience with realistic seeded data and localStorage persistence.
+
+Do not pretend that simulated features are connected to a real backend.
+
+Keep the code:
+- Clean.
+- Reusable.
+- Well structured.
+- Responsive.
+- Easy to maintain.
+
+## 16. FINAL TESTING
+
+Before finishing, test the complete user journey:
+
+1. Open the public landing page.
+2. Navigate to Login.
+3. Use the demo credentials.
+4. Verify that the dashboard opens.
+5. Navigate through every sidebar section.
+6. Search and filter sample users.
+7. Open user profiles.
+8. Send and accept connection requests.
+9. Add and remove skills.
+10. Schedule a demo session.
+11. View notifications.
+12. Edit profile details.
+13. Refresh the page.
+14. Verify demo data persistence.
+15. Log out successfully.
+16. Verify mobile responsiveness.
+
+Fix all major errors before declaring the project complete.
+
+---
+
+# FINAL DESIGN EXPECTATION
+
+The final SkillSwap platform should feel like a real, polished, creative startup product — not a generic AI-generated website.
+
+The most important priorities are:
+
+1. A beautiful and distinctive pink-based brand identity.
+2. Consistent use of the new colour palette.
+3. A professional custom logo.
+4. A visually impressive public landing page.
+5. A completely separate functional dashboard.
+6. Working demo login with realistic sample data.
+7. Repairing the existing dashboard access issue.
+8. Functional interactions throughout the platform.
+9. Clean responsive design.
+10. No unnecessary charts, graphs or tables.
+
+*IMPORTANT: Work directly inside my existing project. Inspect the current implementation first, preserve useful code, repair broken functionality and then implement the redesign. Do not stop after creating the landing page. The authenticated dashboard and all major navigation sections must also be accessible and testable.*

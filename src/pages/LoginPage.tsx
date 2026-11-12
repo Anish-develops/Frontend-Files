@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { ArrowLeftRight, LogIn, ShieldCheck } from 'lucide-react';
+import { LogIn, Sparkles, ShieldCheck } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
+import { Logo } from '../components/ui/Logo';
 import { useAuth } from '../context/AuthContext';
 import { useNotification } from '../context/NotificationContext';
 
@@ -42,8 +43,8 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
     setError('');
     setIsLoading(true);
     try {
-      await login('alex.chen@example.com', 'demo');
-      toast('Welcome back! Signed in with Demo Account', 'success');
+      await login('demo@skillswap.demo', 'SkillSwap123');
+      toast('Welcome back! Signed into Demo Account (Alex Morgan)', 'success');
       onNavigate('dashboard');
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : 'Demo sign in failed');
@@ -54,33 +55,52 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
 
   return (
     <div className="min-h-[75vh] flex items-center justify-center px-4 py-10 text-text-primary">
-      <div className="w-full max-w-md space-y-5">
+      <div className="w-full max-w-md space-y-6">
         {/* Brand header */}
-        <div className="text-center space-y-1.5">
+        <div className="text-center space-y-2">
           <div className="inline-flex items-center justify-center mb-1">
-            <img
-              src="/logo.png"
-              alt="SkillSwap Logo"
-              className="w-12 h-12 rounded-[10px] object-contain shadow-subtle"
-            />
+            <Logo size="lg" />
           </div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-text-primary">
+          <h1 className="text-2xl sm:text-3xl font-bold font-heading tracking-tight text-text-primary">
             Sign in to SkillSwap
           </h1>
-          <p className="text-xs text-text-secondary">
+          <p className="text-xs sm:text-sm text-text-secondary">
             Access your 1:1 reciprocal skill exchange network and dashboard.
           </p>
         </div>
 
-        {/* Main Login Form in Soft White Card */}
-        <div className="rounded-[14px] border border-border bg-surface p-7 shadow-card space-y-4">
-          <form onSubmit={handleSubmit} className="space-y-3.5">
+        {/* Main Login Form */}
+        <div className="rounded-[18px] border border-border bg-surface p-7 sm:p-8 shadow-pop space-y-5">
+          {/* Quick Demo Mode Banner */}
+          <div className="p-3.5 rounded-[12px] bg-accent/20 border border-accent/40 flex items-center justify-between gap-3">
+            <div>
+              <p className="text-xs font-bold text-text-primary font-heading">
+                Instant Demo Access
+              </p>
+              <p className="text-[11px] text-text-secondary">
+                Explore as Alex Morgan (UI/UX & Figma)
+              </p>
+            </div>
+            <Button
+              type="button"
+              variant="lime"
+              size="sm"
+              className="font-bold text-xs shadow-subtle shrink-0"
+              onClick={handleDemoLogin}
+              disabled={isLoading}
+            >
+              <Sparkles className="w-3.5 h-3.5 mr-1" />
+              <span>1-Click Demo</span>
+            </Button>
+          </div>
+
+          <form onSubmit={handleSubmit} className="space-y-4">
             <Input
               label="Email Address"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="name@example.com"
+              placeholder="demo@skillswap.demo"
               required
             />
 
@@ -89,7 +109,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
                 <label className="block text-xs font-medium text-text-primary">
                   Password
                 </label>
-                <span className="text-[11px] text-text-secondary hover:text-primary cursor-pointer transition-colors">
+                <span className="text-[11px] text-text-secondary hover:text-text-primary cursor-pointer transition-colors">
                   Forgot password?
                 </span>
               </div>
@@ -97,13 +117,13 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••••••"
+                placeholder="SkillSwap123"
                 required
               />
             </div>
 
             {error && (
-              <p className="text-xs text-danger font-medium bg-danger-soft p-2.5 rounded-[8px] border border-danger-border">
+              <p className="text-xs text-danger font-medium bg-danger-soft p-3 rounded-[8px] border border-danger-border">
                 {error}
               </p>
             )}
@@ -112,22 +132,11 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
               type="submit"
               variant="primary"
               size="lg"
-              className="w-full gap-2 mt-1"
+              className="w-full gap-2 mt-2 font-bold"
               isLoading={isLoading}
             >
               <LogIn className="w-4 h-4" />
               <span>Sign In to Account</span>
-            </Button>
-
-            <Button
-              type="button"
-              variant="secondary"
-              size="md"
-              className="w-full gap-2 text-xs"
-              onClick={handleDemoLogin}
-              disabled={isLoading}
-            >
-              <span>Explore as Demo User (Alex Chen)</span>
             </Button>
           </form>
 
@@ -136,16 +145,17 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
             <button
               type="button"
               onClick={() => onNavigate('signup')}
-              className="font-medium text-primary hover:text-primary-hover underline ml-1"
+              className="font-bold text-primary-deep dark:text-primary hover:underline ml-1"
             >
-              Join the exchange
+              Join the exchange free
             </button>
           </div>
         </div>
 
+        {/* Security badge */}
         <div className="flex items-center justify-center gap-1.5 text-xs text-text-secondary">
           <ShieldCheck className="w-4 h-4 text-success" />
-          <span>Non-monetary peer platform</span>
+          <span>No credit card or payments ever required. 100% peer learning.</span>
         </div>
       </div>
     </div>

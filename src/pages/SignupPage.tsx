@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { ArrowLeftRight, UserPlus, ShieldCheck } from 'lucide-react';
+import { UserPlus, ShieldCheck, Sparkles } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
+import { Logo } from '../components/ui/Logo';
 import { useAuth } from '../context/AuthContext';
 import { useNotification } from '../context/NotificationContext';
 
@@ -72,24 +73,20 @@ export const SignupPage: React.FC<SignupPageProps> = ({ onNavigate }) => {
     <div className="min-h-[80vh] flex items-center justify-center px-4 py-10 text-text-primary">
       <div className="w-full max-w-lg space-y-5">
         {/* Brand header */}
-        <div className="text-center space-y-1.5">
+        <div className="text-center space-y-2">
           <div className="inline-flex items-center justify-center mb-1">
-            <img
-              src="/logo.png"
-              alt="SkillSwap Logo"
-              className="w-12 h-12 rounded-[10px] object-contain shadow-subtle"
-            />
+            <Logo size="lg" />
           </div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-text-primary">
+          <h1 className="text-2xl sm:text-3xl font-bold font-heading tracking-tight text-text-primary">
             Create your exchange profile
           </h1>
-          <p className="text-xs text-text-secondary">
+          <p className="text-xs sm:text-sm text-text-secondary">
             Join the non-monetary 1:1 learning community. Share your craft, learn from peers.
           </p>
         </div>
 
-        {/* Main Signup Form in Soft White Card */}
-        <div className="rounded-[14px] border border-border bg-surface p-6 sm:p-7 shadow-card space-y-4">
+        {/* Main Signup Form */}
+        <div className="rounded-[18px] border border-border bg-surface p-7 sm:p-8 shadow-pop space-y-4">
           <form onSubmit={handleSubmit} className="space-y-3.5">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
               <Input

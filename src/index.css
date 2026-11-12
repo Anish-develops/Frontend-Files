@@ -4,101 +4,128 @@
 
 @layer base {
   :root {
-    /* Base surfaces (Warm Ivory Light Mode) */
-    --background: #F7F4EE;
-    --surface: #FFFEFB;
-    --surface-muted: #EFE9DF;
-    --surface-elevated: #FFFEFB;
-    --surface-subtle: #EFE9DF;
-    --border: #E4DACE;
-    --border-subtle: #EDE5DB;
+    /* Base surfaces — Startup Creative (Paper Cream & Pure White) */
+    --background: #F7F4EC;
+    --surface: #FFFFFF;
+    --surface-muted: #F2EFE6;
+    --surface-elevated: #FFFFFF;
+    --surface-subtle: #FAF7F0;
+    --border: #E8E3D7;
+    --border-subtle: #F0ECE2;
 
     /* Typography */
-    --text-primary: #292A27;
-    --text-secondary: #716D66;
-    --text-muted: #91887E;
+    --text-primary: #242126;
+    --text-secondary: #77727A;
+    --text-muted: #959099;
 
-    /* Brand */
-    --primary: #C66A4A;
-    --primary-hover: #A95338;
-    --primary-deep: #8E452E;
-    --primary-soft: #EEDDD2;
-    --primary-fg: #FFFFFF;
+    /* Primary Brand — Blush Pink */
+    --primary: #F2B8C8;
+    --primary-hover: #E8A2B4;
+    --primary-deep: #D47B93;
+    --primary-soft: #FDEBF1;
+    --primary-fg: #242126;
 
-    /* Supporting & Semantic */
-    --success: #71836D;
-    --success-soft: #E5EDE4;
-    --rating: #D6A75D;
+    /* Highlighting & CTAs — Electric Lime */
+    --accent: #D7F36A;
+    --accent-hover: #C6E44E;
+    --accent-soft: #F5FCD3;
+    --accent-fg: #242126;
 
-    /* Alerts */
-    --warning: #C66A4A;
-    --warning-soft: #EEDDD2;
-    --danger: #A95338;
-    --danger-soft: #FDF2F0;
-    --danger-border: #F2C4BC;
+    /* Secondary Accents — Warm Peach & Soft Lavender */
+    --peach: #F4A78C;
+    --peach-soft: #FDF1ED;
+    --lavender: #D8C9EF;
+    --lavender-soft: #F5F1FA;
+
+    /* Supporting & Semantic Alerts */
+    --success: #3D8854;
+    --success-soft: #EDF7F0;
+    --rating: #D97706;
+    --warning: #D97706;
+    --warning-soft: #FEF3C7;
+    --danger: #E05353;
+    --danger-soft: #FDF2F2;
+    --danger-border: #F7C6C6;
 
     /* Shape and elevation */
-    --radius-card: 14px;
-    --radius-button: 10px;
-    --radius-input: 9px;
-    --shadow-card: 0 4px 16px rgba(41, 42, 39, 0.05);
+    --radius-card: 16px;
+    --radius-button: 12px;
+    --radius-input: 10px;
+    --shadow-card: 0 4px 20px rgba(36, 33, 38, 0.05);
+    --shadow-pop: 0 8px 30px rgba(36, 33, 38, 0.08);
   }
 
   :root.dark,
   html.dark,
   body.dark,
   .dark {
-    /* Base surfaces (Warm Charcoal Dark Mode - Deep Espresso Canvas) */
-    --background: #171513;
-    --surface: #211F1C;
-    --surface-muted: #2B2824;
-    --surface-elevated: #2B2824;
-    --surface-subtle: #332E29;
-    --border: #403A34;
-    --border-subtle: #302B25;
+    /* Base surfaces — Deep Charcoal Ink & Elevated Surfaces */
+    --background: #171518;
+    --surface: #221F24;
+    --surface-muted: #2C2830;
+    --surface-elevated: #302C35;
+    --surface-subtle: #27232B;
+    --border: #3D3742;
+    --border-subtle: #302A35;
 
     /* Typography */
-    --text-primary: #F2EEE8;
-    --text-secondary: #B8B0A6;
-    --text-muted: #91887E;
+    --text-primary: #F7F5F8;
+    --text-secondary: #ADA6B3;
+    --text-muted: #827C88;
 
-    /* Brand */
-    --primary: #D98263;
-    --primary-hover: #E39475;
-    --primary-deep: #63382C;
-    --primary-soft: #3A2923;
-    --primary-fg: #211F1C;
+    /* Primary Brand — Blush Pink */
+    --primary: #F2B8C8;
+    --primary-hover: #F8CAD5;
+    --primary-deep: #5A2A37;
+    --primary-soft: #38242C;
+    --primary-fg: #242126;
 
-    /* Supporting & Semantic */
-    --success: #A3B89A;
-    --success-soft: #293329;
-    --rating: #D8B36A;
+    /* Highlighting & CTAs — Electric Lime */
+    --accent: #D7F36A;
+    --accent-hover: #E4F982;
+    --accent-soft: #2E3516;
+    --accent-fg: #242126;
 
-    /* Alerts */
-    --warning: #D98263;
-    --warning-soft: #63382C;
-    --danger: #E06D53;
-    --danger-soft: #38201B;
-    --danger-border: #542E26;
+    /* Secondary Accents */
+    --peach: #F4A78C;
+    --peach-soft: #3D2924;
+    --lavender: #D8C9EF;
+    --lavender-soft: #322A3E;
+
+    /* Supporting & Semantic Alerts */
+    --success: #79D690;
+    --success-soft: #1E3825;
+    --rating: #FBBF24;
+    --warning: #FBBF24;
+    --warning-soft: #3D2E14;
+    --danger: #F87171;
+    --danger-soft: #3D1E1E;
+    --danger-border: #6B2929;
 
     /* Shape and elevation */
-    --shadow-card: 0 6px 20px rgba(0, 0, 0, 0.16);
+    --shadow-card: 0 6px 24px rgba(0, 0, 0, 0.25);
+    --shadow-pop: 0 10px 32px rgba(0, 0, 0, 0.35);
   }
 
   body {
     background-color: var(--background);
     color: var(--text-primary);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'DM Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
     transition: background-color 0.2s ease, color 0.2s ease;
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    letter-spacing: -0.02em;
+  }
 }
 
-/* Accessible focus ring using brand Terracotta */
+/* Accessible focus ring using Electric Lime or Primary */
 *:focus-visible {
-  outline: 2px solid var(--primary);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 

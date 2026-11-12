@@ -10,10 +10,12 @@ import {
   Menu,
   X,
   ChevronDown,
+  Sparkles,
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { Avatar } from '../ui/avatar';
 import { ThemeToggle } from '../ui/ThemeToggle';
+import { Logo } from '../ui/Logo';
 import { api } from '../../services/api';
 
 interface NavbarProps {
@@ -22,11 +24,20 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
-  const { user, logout } = useAuth();
+  const { user, login, logout } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const [unreadCount, setUnreadCount] = useState(0);
   const [pendingCount, setPendingCount] = useState(0);
+
+  const handleDemoLogin = async () => {
+    try {
+      await login('demo@skillswap.demo', 'SkillSwap123');
+      onNavigate('dashboard');
+    } catch {
+      onNavigate('dashboard');
+    }
+  };
 
   useEffect(() => {
     const fetchCounters = async () => {
@@ -79,21 +90,9 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
           <div className="flex items-center gap-6 sm:gap-8">
             <button
               onClick={() => handleNavClick(user ? 'dashboard' : 'landing')}
-              className="flex items-center gap-2.5 text-left group focus:outline-none"
+              className="flex items-center text-left group focus:outline-none"
             >
-              <img
-                src="/logo.png"
-                alt="SkillSwap Logo"
-                className="w-12 h-12 rounded-[8px] object-contain shadow-subtle group-hover:scale-105 transition-transform"
-              />
-              <div className="flex items-baseline gap-1.5">
-                <span className="text-base font-bold tracking-tight text-text-primary">
-                  SkillSwap
-                </span>
-                <span className="hidden sm:inline-block text-[11px] font-normal text-text-secondary">
-                  Peer Learning
-                </span>
-              </div>
+              <Logo size="md" />
             </button>
 
             {/* Authenticated Desktop Navigation Links */}
@@ -115,7 +114,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
                       <Icon className="w-4 h-4" />
                       <span>{item.label}</span>
                       {item.badge !== undefined && (
-                        <span className="ml-1 px-1.5 py-0.2 rounded-full text-[10px] font-semibold bg-primary text-primary-fg">
+                        <span className="ml-1 px-1.5 py-0.5 rounded-full text-[10px] font-semibold bg-accent text-accent-fg">
                           {item.badge}
                         </span>
                       )}
@@ -133,17 +132,11 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
                 onClick={() => handleNavClick('landing')}
                 className={`px-3 py-1.5 rounded-[8px] transition-colors ${
                   currentRoute === 'landing'
-                    ? 'text-primary font-semibold'
+                    ? 'text-text-primary font-bold'
                     : 'text-text-secondary hover:text-text-primary'
                 }`}
               >
                 Overview
-              </button>
-              <button
-                onClick={() => handleNavClick('matches')}
-                className="px-3 py-1.5 rounded-[8px] text-text-secondary hover:text-text-primary transition-colors"
-              >
-                Explore Skills
               </button>
               <button
                 onClick={() => {
@@ -155,6 +148,23 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
                 className="px-3 py-1.5 rounded-[8px] text-text-secondary hover:text-text-primary transition-colors"
               >
                 How It Works
+              </button>
+              <button
+                onClick={() => handleNavClick('matches')}
+                className="px-3 py-1.5 rounded-[8px] text-text-secondary hover:text-text-primary transition-colors"
+              >
+                Explore Skills
+              </button>
+              <button
+                onClick={() => {
+                  handleNavClick('landing');
+                  setTimeout(() => {
+                    document.getElementById('why-skillswap')?.scrollIntoView({ behavior: 'smooth' });
+                  }, 50);
+                }}
+                className="px-3 py-1.5 rounded-[8px] text-text-secondary hover:text-text-primary transition-colors"
+              >
+                Why SkillSwap
               </button>
             </div>
           )}
@@ -171,20 +181,28 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
                   className="flex items-center gap-2 p-1 pl-1.5 rounded-full hover:bg-surface-muted border border-border transition-colors focus:outline-none"
                 >
                   <Avatar src={user.avatar} name={user.name} size="sm" />
-                  <span className="hidden sm:block text-xs font-medium text-text-primary px-1">
+                  <span className="hidden sm:block text-xs font-semibold text-text-primary px-1">
                     {user.name.split(' ')[0]}
                   </span>
                   <ChevronDown className="w-3.5 h-3.5 text-text-secondary pr-1" />
                 </button>
 
                 {userDropdownOpen && (
-                  <div className="absolute right-0 mt-2 w-56 rounded-[12px] bg-surface border border-border shadow-lifted py-1.5 z-50 animate-in fade-in zoom-in-95 duration-100">
+                  <div className="absolute right-0 mt-2 w-56 rounded-[14px] bg-surface border border-border shadow-pop py-1.5 z-50 animate-in fade-in zoom-in-95 duration-100">
                     <div className="px-3.5 py-2 border-b border-border">
-                      <p className="text-xs font-semibold text-text-primary leading-tight">
+                      <p className="text-xs font-bold text-text-primary leading-tight font-heading">
                         {user.name}
                       </p>
                       <p className="text-[11px] text-text-secondary truncate mt-0.5">{user.email}</p>
                     </div>
+
+                    <button
+                      onClick={() => handleNavClick('dashboard')}
+                      className="w-full flex items-center gap-2.5 px-3.5 py-2 text-xs text-text-secondary hover:text-text-primary hover:bg-surface-muted transition-colors"
+                    >
+                      <LayoutDashboard className="w-3.5 h-3.5 text-text-secondary" />
+                      <span>Dashboard Workspace</span>
+                    </button>
 
                     <button
                       onClick={() => handleNavClick('profile')}
@@ -192,14 +210,6 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
                     >
                       <UserIcon className="w-3.5 h-3.5 text-text-secondary" />
                       <span>My Profile & Skills</span>
-                    </button>
-
-                    <button
-                      onClick={() => handleNavClick('landing')}
-                      className="w-full flex items-center gap-2.5 px-3.5 py-2 text-xs text-text-secondary hover:text-text-primary hover:bg-surface-muted transition-colors"
-                    >
-                      <Compass className="w-3.5 h-3.5 text-text-secondary" />
-                      <span>Platform Overview</span>
                     </button>
 
                     <div className="my-1 border-t border-border" />
@@ -221,15 +231,23 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => handleNavClick('login')}
-                  className="px-3.5 py-1.5 text-xs font-medium text-text-secondary hover:text-text-primary rounded-[8px] hover:bg-surface-muted transition-colors"
+                  className="hidden sm:inline-block px-3.5 py-1.5 text-xs font-semibold text-text-secondary hover:text-text-primary rounded-[8px] hover:bg-surface-muted transition-colors"
                 >
                   Log In
                 </button>
                 <button
-                  onClick={() => handleNavClick('signup')}
-                  className="px-4 py-2 text-xs font-medium bg-primary text-primary-fg rounded-[10px] hover:bg-primary-hover shadow-subtle transition-colors active:scale-98"
+                  onClick={handleDemoLogin}
+                  className="px-3 py-1.5 text-xs font-bold bg-accent text-accent-fg hover:bg-accent-hover rounded-[10px] shadow-subtle transition-all active:scale-[0.98] flex items-center gap-1.5 border border-accent/40"
+                  title="Explore with 1-click Demo Account"
                 >
-                  Get Started
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>Explore Demo</span>
+                </button>
+                <button
+                  onClick={() => handleNavClick('signup')}
+                  className="px-3.5 py-1.5 text-xs font-semibold bg-primary text-primary-fg rounded-[10px] hover:bg-primary-hover shadow-subtle transition-all active:scale-[0.98]"
+                >
+                  Sign Up
                 </button>
               </div>
             )}
@@ -301,6 +319,13 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
             ) : (
               <div className="flex flex-col gap-2 pt-1">
                 <button
+                  onClick={handleDemoLogin}
+                  className="w-full py-2.5 text-center text-xs font-bold bg-accent text-accent-fg rounded-[10px] shadow-subtle flex items-center justify-center gap-1.5 border border-accent/40"
+                >
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>Explore Demo Account</span>
+                </button>
+                <button
                   onClick={() => handleNavClick('matches')}
                   className="w-full py-2 text-center text-xs font-medium text-text-secondary bg-surface-muted rounded-[8px]"
                 >
@@ -314,9 +339,9 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
                 </button>
                 <button
                   onClick={() => handleNavClick('signup')}
-                  className="w-full py-2 text-center text-xs font-medium bg-primary text-primary-fg rounded-[10px] shadow-subtle hover:bg-primary-hover"
+                  className="w-full py-2 text-center text-xs font-semibold bg-primary text-primary-fg rounded-[10px] shadow-subtle hover:bg-primary-hover"
                 >
-                  Get Started
+                  Start Swapping Free
                 </button>
               </div>
             )}
